@@ -7,6 +7,8 @@ void tela_equipe(void);
 void modulo_funcionarios(void);
 void buscar_funcionario(void);
 void cadastrar_funcionario(void);
+void atualizar_funcionario(void);
+void deletar_funcionairo(void);
 
 // Programa principal
 int main(void) {
@@ -16,6 +18,8 @@ int main(void) {
     modulo_funcionarios();
     buscar_funcionario();
     cadastrar_funcionario();
+    atualizar_funcionario();
+    deletar_funcionairo();
     return 0;
 }
 
@@ -145,6 +149,8 @@ void modulo_funcionarios(void) {
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
 }
+
+
 void buscar_funcionario(void) {
     char cpf[11];
     system("clear||cls");
@@ -165,7 +171,7 @@ void buscar_funcionario(void) {
     printf("|||_________________________________________________________________________|||\n");
     printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");
-    printf("|||                         Digite o CPF do funcionário: ");
+    printf("|||                    Digite o CPF do funcionário: ");
     scanf("%s", cpf);
     getchar();
     printf("|||                                                                         |||\n");
@@ -175,6 +181,7 @@ void buscar_funcionario(void) {
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
 }
+
 
 void cadastrar_funcionario(void) {
     char cpf[11], nome[30], email[30], senha[30], confirm_senha[30], telefone[30], endereco[50];
@@ -211,6 +218,81 @@ void cadastrar_funcionario(void) {
     printf("|||                    Digite o endereco do funcionário: ");
     scanf("%s", endereco);
     getchar();
+    printf("|||                                                                         |||\n");
+    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+
+void atualizar_funcionario(void) {
+    char cpf[11], nome[30], email[30], senha[30], confirm_senha[30], telefone[30], endereco[50];
+    system("clear||cls");
+    printf("\n");
+    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||            ===================================================          |||\n");
+    printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
+    printf("|||            = = = =  Sistema de Gestão de Funcionários  = = = =          |||\n");
+    printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
+    printf("|||            ===================================================          |||\n");
+    printf("|||            Developed by @joaosantosmedeiros -- since Ago, 2023          |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||                        Atualiazção de Funcionários                      |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||_________________________________________________________________________|||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||             Digite o CPF do funcionário a ser atualizado: ");
+    scanf("%s", cpf);
+    printf("|||             Digite o novo nome do funcionário: ");
+    scanf("%s", nome);
+    printf("|||             Digite o novo email do funcionário: ");
+    scanf("%s", email);
+    printf("|||             Digite a nova senha do funcionário: ");
+    scanf("%s", senha);
+    printf("|||             Confirme a nova senha do funcionário: ");
+    scanf("%s", confirm_senha);
+    printf("|||             Digite o novo telefone do funcionário: ");
+    scanf("%s", telefone);
+    printf("|||             Digite o novo endereco do funcionário: ");
+    scanf("%s", endereco);
+    getchar();
+    printf("|||                                                                         |||\n");
+    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+
+void deletar_funcionairo(void) {
+    char cpf[11];
+    system("clear||cls");
+    printf("\n");
+    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||            ===================================================          |||\n");
+    printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
+    printf("|||            = = = =  Sistema de Gestão de Funcionários  = = = =          |||\n");
+    printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
+    printf("|||            ===================================================          |||\n");
+    printf("|||            Developed by @joaosantosmedeiros -- since Ago, 2023          |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||                         Remoção de Funcionários                         |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||_________________________________________________________________________|||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||                         Digite o CPF do funcionário: ");
+    scanf("%s", cpf);
+    getchar();
+    printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
     printf("\n");
