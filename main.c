@@ -4,22 +4,36 @@
 void tela_menu_principal(void);
 void tela_sobre(void);
 void tela_equipe(void);
+
 void modulo_funcionarios(void);
 void buscar_funcionario(void);
 void cadastrar_funcionario(void);
 void atualizar_funcionario(void);
-void deletar_funcionairo(void);
+void deletar_funcionario(void);
+
+void modulo_departamentos(void);
+void buscar_departamento(void);
+void cadastrar_departamento(void);
+void atualizar_departamento(void);
+void deletar_departamento(void);
 
 // Programa principal
 int main(void) {
     tela_menu_principal();
     tela_sobre();
     tela_equipe();
+    
     modulo_funcionarios();
     buscar_funcionario();
     cadastrar_funcionario();
     atualizar_funcionario();
-    deletar_funcionairo();
+    deletar_funcionario();
+
+    modulo_departamentos();
+    cadastrar_departamento();
+    buscar_departamento();
+    atualizar_departamento();
+    deletar_departamento();
     return 0;
 }
 
@@ -241,7 +255,7 @@ void atualizar_funcionario(void) {
     printf("|||                                                                         |||\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
     printf("|||                                                                         |||\n");
-    printf("|||                        Atualiazção de Funcionários                      |||\n");
+    printf("|||                        Atualização de Funcionários                      |||\n");
     printf("|||                                                                         |||\n");
     printf("|||_________________________________________________________________________|||\n");
     printf("|||                                                                         |||\n");
@@ -269,7 +283,7 @@ void atualizar_funcionario(void) {
 }
 
 
-void deletar_funcionairo(void) {
+void deletar_funcionario(void) {
     char cpf[11];
     system("clear||cls");
     printf("\n");
@@ -299,3 +313,172 @@ void deletar_funcionairo(void) {
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
 }
+
+
+void modulo_departamentos(void) {
+    char op;
+    system("clear||cls");
+    printf("\n");
+    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||            ===================================================          |||\n");
+    printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
+    printf("|||            = = = =  Sistema de Gestão de Funcionários  = = = =          |||\n");
+    printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
+    printf("|||            ===================================================          |||\n");
+    printf("|||            Developed by @joaosantosmedeiros -- since Ago, 2023          |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||                          Módulo Departamentos                           |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||            1. Buscar Departamento                                       |||\n");
+    printf("|||            2. Cadastrar Departamento                                    |||\n");
+    printf("|||            3. Atualizar Departamento                                    |||\n");
+    printf("|||            4. Deletar Departamento                                      |||\n");
+    printf("|||            0. Sair                                                      |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||            Escolha a opção desejada: ");
+    scanf("%c", &op);
+    getchar();
+    printf("|||                                                                         |||\n");
+    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+
+void buscar_departamento(void) {
+    int id_departamento;
+    system("clear||cls");
+    printf("\n");
+    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||            ===================================================          |||\n");
+    printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
+    printf("|||            = = = =  Sistema de Gestão de Funcionários  = = = =          |||\n");
+    printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
+    printf("|||            ===================================================          |||\n");
+    printf("|||            Developed by @joaosantosmedeiros -- since Ago, 2023          |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||                         Busca de Departamento                           |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||_________________________________________________________________________|||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||                    Digite o ID do departamento: ");
+    scanf("%d", &id_departamento);
+    getchar();
+    printf("|||                                                                         |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+
+void cadastrar_departamento(void) {
+    int id;
+    char sigla[3], nome[30];
+    system("clear||cls");
+    printf("\n");
+    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||            ===================================================          |||\n");
+    printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
+    printf("|||            = = = =  Sistema de Gestão de Funcionários  = = = =          |||\n");
+    printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
+    printf("|||            ===================================================          |||\n");
+    printf("|||            Developed by @joaosantosmedeiros -- since Ago, 2023          |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||                        Cadastro de Departamentos                        |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||_________________________________________________________________________|||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||                    Digite o id do departamento: ");
+    scanf("%d", &id);
+    printf("|||                    Digite o nome do departamento: ");
+    scanf("%s", nome);
+    printf("|||                    Digite a sigla do departamento: ");
+    scanf("%s", sigla);
+    printf("|||                                                                         |||\n");
+    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+
+void atualizar_departamento(void) {
+    int id_departamento;
+    char nome[30], sigla[30];
+    system("clear||cls");
+    printf("\n");
+    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||            ===================================================          |||\n");
+    printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
+    printf("|||            = = = =  Sistema de Gestão de Funcionários  = = = =          |||\n");
+    printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
+    printf("|||            ===================================================          |||\n");
+    printf("|||            Developed by @joaosantosmedeiros -- since Ago, 2023          |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||                        Atualização de Departamentos                     |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||_________________________________________________________________________|||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||             Digite o id do departamento a ser atualizado: ");
+    scanf("%d", &id_departamento);
+    printf("|||             Digite o novo nome do departamento: ");
+    scanf("%s", nome);
+    printf("|||             Digite a nova sigla do departamento: ");
+    scanf("%s", sigla);
+    printf("|||                                                                         |||\n");
+    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
+
+void deletar_departamento(void) {
+    int id_departamento;
+    system("clear||cls");
+    printf("\n");
+    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||            ===================================================          |||\n");
+    printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
+    printf("|||            = = = =  Sistema de Gestão de Funcionários  = = = =          |||\n");
+    printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
+    printf("|||            ===================================================          |||\n");
+    printf("|||            Developed by @joaosantosmedeiros -- since Ago, 2023          |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||                         Remoção de Departamentos                        |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||_________________________________________________________________________|||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||                         Digite o ID do departamento: ");
+    scanf("%d", &id_departamento);
+    getchar();
+    printf("|||                                                                         |||\n");
+    printf("|||                                                                         |||\n");
+    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
+
