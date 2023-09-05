@@ -397,35 +397,54 @@ void deletar_funcionario(void) {
 
 void modulo_departamentos(void) {
     char op;
-    system("clear||cls");
-    printf("\n");
-    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||            ===================================================          |||\n");
-    printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
-    printf("|||            = = = =  Sistema de Gestão de Funcionários  = = = =          |||\n");
-    printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
-    printf("|||            ===================================================          |||\n");
-    printf("|||            Developed by @joaosantosmedeiros -- since Ago, 2023          |||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||                          Módulo Departamentos                           |||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||            1. Buscar Departamento                                       |||\n");
-    printf("|||            2. Cadastrar Departamento                                    |||\n");
-    printf("|||            3. Atualizar Departamento                                    |||\n");
-    printf("|||            4. Deletar Departamento                                      |||\n");
-    printf("|||            0. Sair                                                      |||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||            Escolha a opção desejada: ");
-    scanf("%c", &op);
-    getchar();
-    printf("|||                                                                         |||\n");
-    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
-    printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    do{
+        system("clear||cls");
+        printf("\n");
+        printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+        printf("|||                                                                         |||\n");
+        printf("|||            ===================================================          |||\n");
+        printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
+        printf("|||            = = = =  Sistema de Gestão de Funcionários  = = = =          |||\n");
+        printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
+        printf("|||            ===================================================          |||\n");
+        printf("|||            Developed by @joaosantosmedeiros -- since Ago, 2023          |||\n");
+        printf("|||                                                                         |||\n");
+        printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+        printf("|||                                                                         |||\n");
+        printf("|||                          Módulo Departamentos                           |||\n");
+        printf("|||                                                                         |||\n");
+        printf("|||            1. Buscar Departamento                                       |||\n");
+        printf("|||            2. Cadastrar Departamento                                    |||\n");
+        printf("|||            3. Atualizar Departamento                                    |||\n");
+        printf("|||            4. Deletar Departamento                                      |||\n");
+        printf("|||            0. Sair                                                      |||\n");
+        printf("|||                                                                         |||\n");
+        printf("|||            Escolha a opção desejada: ");
+        scanf("%c", &op);
+        getchar();
+        printf("|||                                                                         |||\n");
+        printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+        printf("\n");
+        printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+        getchar();
+
+        switch (op){
+        case '1':
+            buscar_departamento();
+            break;
+        case '2':
+            cadastrar_departamento();
+            break;
+        case '3':
+            atualizar_departamento();
+            break;
+        case '4':
+            deletar_departamento();
+            break;
+        default:
+            break;
+        }
+    }while(op != '0');
 }
 
 
@@ -462,7 +481,6 @@ void buscar_departamento(void) {
 
 
 void cadastrar_departamento(void) {
-    int id;
     char sigla[3], nome[30];
     system("clear||cls");
     printf("\n");
@@ -482,12 +500,11 @@ void cadastrar_departamento(void) {
     printf("|||_________________________________________________________________________|||\n");
     printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");
-    printf("|||                    Digite o id do departamento: ");
-    scanf("%d", &id);
     printf("|||                    Digite o nome do departamento: ");
     scanf("%s", nome);
     printf("|||                    Digite a sigla do departamento: ");
     scanf("%s", sigla);
+    getchar();
     printf("|||                                                                         |||\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
     printf("\n");
@@ -523,6 +540,7 @@ void atualizar_departamento(void) {
     scanf("%s", nome);
     printf("|||             Digite a nova sigla do departamento: ");
     scanf("%s", sigla);
+    getchar();
     printf("|||                                                                         |||\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
     printf("\n");
