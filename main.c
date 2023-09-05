@@ -181,7 +181,7 @@ void tela_equipe(void) {
     printf("|||                                                                         |||\n");
     printf("|||            João Pedro dos Santos Medeiros                               |||\n");
     printf("|||            E-mail: jopesame@gmail.com                                   |||\n");
-    printf("|||            Redes sociais: @joaosantosmedeiros                           |||\n");
+    printf("|||            Instagram: @joaopedro.santosm                               |||\n");
     printf("|||            Git: https://github.com/joaosantosmedeiros/CFuncionarios.git |||\n");
     printf("|||                                                                         |||\n");
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
