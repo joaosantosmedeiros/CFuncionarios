@@ -73,6 +73,7 @@ void tela_menu_principal(void) {
         printf("|||            2. Módulo Departamento                                       |||\n");
         printf("|||            3. Módulo Desempenho                                         |||\n");
         printf("|||            4. Módulo Relatórios                                         |||\n");
+        printf("|||            5. Sobre                                                     |||\n");
         printf("|||            0. Sair                                                      |||\n");
         printf("|||                                                                         |||\n");
         printf("|||            Escolha a opção desejada: ");
@@ -100,6 +101,9 @@ void tela_menu_principal(void) {
         case '4':
             printf("\nEm desenvolvimento\n");
             break;
+        case '5':
+            tela_sobre();
+            break;
         default:
             printf("\nOpção inválida!\n");
             printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
@@ -111,29 +115,49 @@ void tela_menu_principal(void) {
 
 
 void tela_sobre(void) {
-    system("clear||cls");
-    printf("\n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    printf("|||                                                                         |||\n");
-    printf("|||             Universidade Federal do Rio Grande do Norte                 |||\n");
-    printf("|||                 Centro de Ensino Superior do Seridó                     |||\n");
-    printf("|||               Departamento de Computação e Tecnologia                   |||\n");
-    printf("|||                  Disciplina DCT1106 -- Programação                      |||\n");
-    printf("|||                  Projeto Sistema de Gestão de Funcionários              |||\n");
-    printf("|||             Developed by @joaosantosmedeiros -- since Ago, 2023         |||\n");
-    printf("|||                                                                         |||\n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    printf("|||                                                                         |||\n");
-    printf("|||            = = = = = Sistema de Gestão de Funcionários = = = = =        |||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||  Programa utilizado na disciplina DCT1106 - Programação. O programa con-|||\n");
-    printf("|||  tém os principais módulos utilizados para um Sistema de Gestão de Func-|||\n");
-    printf("|||  ionários.                                                              |||\n");
-    printf("|||                                                                         |||\n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    char op;
+    do{
+        system("clear||cls");
+        printf("\n");
+        printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+        printf("|||                                                                         |||\n");
+        printf("|||             Universidade Federal do Rio Grande do Norte                 |||\n");
+        printf("|||                 Centro de Ensino Superior do Seridó                     |||\n");
+        printf("|||               Departamento de Computação e Tecnologia                   |||\n");
+        printf("|||                  Disciplina DCT1106 -- Programação                      |||\n");
+        printf("|||                  Projeto Sistema de Gestão de Funcionários              |||\n");
+        printf("|||             Developed by @joaosantosmedeiros -- since Ago, 2023         |||\n");
+        printf("|||                                                                         |||\n");
+        printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+        printf("|||                                                                         |||\n");
+        printf("|||            = = = = = Sistema de Gestão de Funcionários = = = = =        |||\n");
+        printf("|||                                                                         |||\n");
+        printf("|||  Programa utilizado na disciplina DCT1106 - Programação. O programa con-|||\n");
+        printf("|||  tém os principais módulos utilizados para um Sistema de Gestão de Func-|||\n");
+        printf("|||  ionários.                                                              |||\n");
+        printf("|||                                                                         |||\n");
+        printf("|||                                                                         |||\n");
+        printf("|||            0. Sair                                                      |||\n");
+        printf("|||            1. Equipe                                                    |||\n");
+        printf("|||                                                                         |||\n");
+        printf("|||            Escolha a opção desejada: ");
+        scanf("%c", &op);
+        printf("\n");
+        printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+        getchar();
+
+        if(op == '0'){
+            break;
+            tela_menu_principal();
+        }
+        else if(op == '1'){
+            tela_equipe();
+            break;
+        }
+        else{
+            printf("Opção inválida!");
+        }
+    }while(op != '0');
 }
 
 
@@ -164,6 +188,7 @@ void tela_equipe(void) {
     printf("\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
+    tela_sobre();
 } 
 
 
