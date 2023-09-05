@@ -26,26 +26,26 @@ void deletar_desempenho(void);
 // Programa principal
 int main(void) {
     tela_menu_principal();
-    tela_sobre();
-    tela_equipe();
+    // tela_sobre();
+    // tela_equipe();
 
-    modulo_funcionarios();
-    buscar_funcionario();
-    cadastrar_funcionario();
-    atualizar_funcionario();
-    deletar_funcionario();
+    // modulo_funcionarios();
+    // buscar_funcionario();
+    // cadastrar_funcionario();
+    // atualizar_funcionario();
+    // deletar_funcionario();
 
-    modulo_departamentos();
-    cadastrar_departamento();
-    buscar_departamento();
-    atualizar_departamento();
-    deletar_departamento();
+    // modulo_departamentos();
+    // cadastrar_departamento();
+    // buscar_departamento();
+    // atualizar_departamento();
+    // deletar_departamento();
 
-    modulo_desempenhos();
-    buscar_desempenho();
-    cadastrar_desempenho();
-    atualizar_desempenho();
-    deletar_desempenho();
+    // modulo_desempenhos();
+    // buscar_desempenho();
+    // cadastrar_desempenho();
+    // atualizar_desempenho();
+    // deletar_desempenho();
     return 0;
 }
 
@@ -53,36 +53,60 @@ int main(void) {
 // Funções
 void tela_menu_principal(void) {
     char op;
-    system("clear||cls");
-    printf("\n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    printf("|||                                                                         |||\n");
-    printf("|||             Universidade Federal do Rio Grande do Norte                 |||\n");
-    printf("|||                 Centro de Ensino Superior do Seridó                     |||\n");
-    printf("|||               Departamento de Computação e Tecnologia                   |||\n");
-    printf("|||                  Disciplina DCT1106 -- Programação                      |||\n");
-    printf("|||                  Projeto Sistema de Gestão de Funcionários              |||\n");
-    printf("|||             Developed by @joaosantosmedeiros -- since Ago, 2023         |||\n");
-    printf("|||                                                                         |||\n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    printf("|||                                                                         |||\n");
-    printf("|||            = = = = = Sistema de Gestão de Funcionários = = = = =        |||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||            1. Módulo Funcionários                                       |||\n");
-    printf("|||            2. Módulo Departamento                                       |||\n");
-    printf("|||            3. Módulo Desempenho                                         |||\n");
-    printf("|||            4. Módulo Relatórios                                         |||\n");
-    printf("|||            5. Login                                                     |||\n");
-    printf("|||            0. Sair                                                      |||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||            Escolha a opção desejada: ");
-    scanf("%c", &op);
-    getchar();
-    printf("|||                                                                         |||\n");
-    printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-    printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    do{
+        system("clear||cls");
+        printf("\n");
+        printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+        printf("|||                                                                         |||\n");
+        printf("|||             Universidade Federal do Rio Grande do Norte                 |||\n");
+        printf("|||                 Centro de Ensino Superior do Seridó                     |||\n");
+        printf("|||               Departamento de Computação e Tecnologia                   |||\n");
+        printf("|||                  Disciplina DCT1106 -- Programação                      |||\n");
+        printf("|||                  Projeto Sistema de Gestão de Funcionários              |||\n");
+        printf("|||             Developed by @joaosantosmedeiros -- since Ago, 2023         |||\n");
+        printf("|||                                                                         |||\n");
+        printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+        printf("|||                                                                         |||\n");
+        printf("|||            = = = = = Sistema de Gestão de Funcionários = = = = =        |||\n");
+        printf("|||                                                                         |||\n");
+        printf("|||            1. Módulo Funcionários                                       |||\n");
+        printf("|||            2. Módulo Departamento                                       |||\n");
+        printf("|||            3. Módulo Desempenho                                         |||\n");
+        printf("|||            4. Módulo Relatórios                                         |||\n");
+        printf("|||            0. Sair                                                      |||\n");
+        printf("|||                                                                         |||\n");
+        printf("|||            Escolha a opção desejada: ");
+        scanf("%c", &op);
+        getchar();
+        printf("|||                                                                         |||\n");
+        printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+        printf("\n");
+        printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+        getchar();
+
+        switch (op)
+        {
+        case '0': 
+            break;
+        case '1':
+            modulo_funcionarios();
+            break;
+        case '2':
+            modulo_departamentos();
+            break;
+        case '3':
+            modulo_desempenhos();
+            break;
+        case '4':
+            printf("\nEm desenvolvimento\n");
+            break;
+        default:
+            printf("\nOpção inválida!\n");
+            printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+            getchar();
+            break;
+        }
+    }while(op != '0');
 }
 
 
