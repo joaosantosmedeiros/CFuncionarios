@@ -26,26 +26,6 @@ void deletar_desempenho(void);
 // Programa principal
 int main(void) {
     tela_menu_principal();
-    // tela_sobre();
-    // tela_equipe();
-
-    // modulo_funcionarios();
-    // buscar_funcionario();
-    // cadastrar_funcionario();
-    // atualizar_funcionario();
-    // deletar_funcionario();
-
-    // modulo_departamentos();
-    // cadastrar_departamento();
-    // buscar_departamento();
-    // atualizar_departamento();
-    // deletar_departamento();
-
-    // modulo_desempenhos();
-    // buscar_desempenho();
-    // cadastrar_desempenho();
-    // atualizar_desempenho();
-    // deletar_desempenho();
     return 0;
 }
 
@@ -583,35 +563,55 @@ void deletar_departamento(void) {
 
 void modulo_desempenhos(void) {
     char op;
-    system("clear||cls");
-    printf("\n");
-    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||            ===================================================          |||\n");
-    printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
-    printf("|||            = = = =  Sistema de Gestão de Funcionários  = = = =          |||\n");
-    printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
-    printf("|||            ===================================================          |||\n");
-    printf("|||            Developed by @joaosantosmedeiros -- since Ago, 2023          |||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||                          Módulo Desempenhos                             |||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||            1. Buscar Desempenho                                         |||\n");
-    printf("|||            2. Cadastrar Desempenho                                      |||\n");
-    printf("|||            3. Atualizar Desempenho                                      |||\n");
-    printf("|||            4. Deletar Desempenho                                        |||\n");
-    printf("|||            0. Sair                                                      |||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||            Escolha a opção desejada: ");
-    scanf("%c", &op);
-    getchar();
-    printf("|||                                                                         |||\n");
-    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
-    printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    do{
+        system("clear||cls");
+        printf("\n");
+        printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+        printf("|||                                                                         |||\n");
+        printf("|||            ===================================================          |||\n");
+        printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
+        printf("|||            = = = =  Sistema de Gestão de Funcionários  = = = =          |||\n");
+        printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
+        printf("|||            ===================================================          |||\n");
+        printf("|||            Developed by @joaosantosmedeiros -- since Ago, 2023          |||\n");
+        printf("|||                                                                         |||\n");
+        printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+        printf("|||                                                                         |||\n");
+        printf("|||                          Módulo Desempenhos                             |||\n");
+        printf("|||                                                                         |||\n");
+        printf("|||            1. Buscar Desempenho                                         |||\n");
+        printf("|||            2. Cadastrar Desempenho                                      |||\n");
+        printf("|||            3. Atualizar Desempenho                                      |||\n");
+        printf("|||            4. Deletar Desempenho                                        |||\n");
+        printf("|||            0. Sair                                                      |||\n");
+        printf("|||                                                                         |||\n");
+        printf("|||            Escolha a opção desejada: ");
+        scanf("%c", &op);
+        getchar();
+        printf("|||                                                                         |||\n");
+        printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+        printf("\n");
+        printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+        getchar();
+
+        switch (op)
+        {
+        case '1':
+            buscar_desempenho();
+            break;
+        case '2':
+            buscar_desempenho();
+            break;
+        case '3':
+            atualizar_desempenho();
+            break;
+        case '4':
+            deletar_departamento();
+            break;
+        default:
+            break;
+        }
+    }while(op != '0');
 }
 
 
