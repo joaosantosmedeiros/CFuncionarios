@@ -194,35 +194,54 @@ void tela_equipe(void) {
 
 void modulo_funcionarios(void) {
     char op;
-    system("clear||cls");
-    printf("\n");
-    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||            ===================================================          |||\n");
-    printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
-    printf("|||            = = = =  Sistema de Gestão de Funcionários  = = = =          |||\n");
-    printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
-    printf("|||            ===================================================          |||\n");
-    printf("|||            Developed by @joaosantosmedeiros -- since Ago, 2023          |||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||                           Módulo Funcionários                           |||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||            1. Buscar Funcionário                                        |||\n");
-    printf("|||            2. Cadastrar Funcionário                                     |||\n");
-    printf("|||            3. Atualizar Funcionário                                     |||\n");
-    printf("|||            4. Deletar Funcionário                                       |||\n");
-    printf("|||            0. Sair                                                      |||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||            Escolha a opção desejada: ");
-    scanf("%c", &op);
-    getchar();
-    printf("|||                                                                         |||\n");
-    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
-    printf("\n");
-    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-    getchar();
+    do{
+        system("clear||cls");
+        printf("\n");
+        printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+        printf("|||                                                                         |||\n");
+        printf("|||            ===================================================          |||\n");
+        printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
+        printf("|||            = = = =  Sistema de Gestão de Funcionários  = = = =          |||\n");
+        printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
+        printf("|||            ===================================================          |||\n");
+        printf("|||            Developed by @joaosantosmedeiros -- since Ago, 2023          |||\n");
+        printf("|||                                                                         |||\n");
+        printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+        printf("|||                                                                         |||\n");
+        printf("|||                           Módulo Funcionários                           |||\n");
+        printf("|||                                                                         |||\n");
+        printf("|||            1. Buscar Funcionário                                        |||\n");
+        printf("|||            2. Cadastrar Funcionário                                     |||\n");
+        printf("|||            3. Atualizar Funcionário                                     |||\n");
+        printf("|||            4. Deletar Funcionário                                       |||\n");
+        printf("|||            0. Sair                                                      |||\n");
+        printf("|||                                                                         |||\n");
+        printf("|||            Escolha a opção desejada: ");
+        scanf("%c", &op);
+        getchar();
+        printf("|||                                                                         |||\n");
+        printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+        printf("\n");
+        printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+        getchar();
+        
+        switch(op){
+            case '0':
+                break;
+            case '1':
+                buscar_funcionario();
+                break;
+            case '2':
+                cadastrar_funcionario();
+                break;
+            case '3':
+                atualizar_funcionario();
+                break;
+            case '4': 
+                deletar_funcionario();
+                break;
+        }
+    }while(op != '0');
 }
 
 
