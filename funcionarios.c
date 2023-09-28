@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "funcionarios.h"
+#include "helpers.h"
 
 void modulo_funcionarios(void) {
     char op;
@@ -88,7 +89,7 @@ void buscar_funcionario(void) {
 
 
 void cadastrar_funcionario(void) {
-    char cpf[11], nome[30], email[30], senha[30], confirm_senha[30], telefone[30], endereco[50];
+    char cpf[13], nome[51], email[30], senha[30], confirm_senha[30], telefone[30], endereco[50];
     system("clear||cls");
     printf("\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
@@ -107,10 +108,8 @@ void cadastrar_funcionario(void) {
     printf("|||_________________________________________________________________________|||\n");
     printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");
-    printf("|||                    Digite o CPF do funcionário: ");
-    scanf("%s", cpf);
-    printf("|||                    Digite o nome do funcionário: ");
-    scanf("%s", nome);
+    le_cpf(cpf);
+    le_nome(nome);
     printf("|||                    Digite o email do funcionário: ");
     scanf("%s", email);
     printf("|||                    Digite a senha do funcionário: ");
