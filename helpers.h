@@ -13,6 +13,9 @@ void le_email(char*);
 
 void le_senha(char*);
 
+int valida_telefone(char*);
+void le_telefone(char*);
+
 #endif
 
 

@@ -115,8 +115,8 @@ void cadastrar_funcionario(void) {
     le_email(email);
     printf("|||                                                                         |||\n");
     le_senha(senha);
-    printf("|||                    Digite o telefone do funcionário: ");
-    scanf("%s", telefone);
+    printf("|||                                                                         |||\n");
+    le_telefone(telefone);
     printf("|||                    Digite o endereco do funcionário: ");
     scanf("%s", endereco);
     getchar();

@@ -176,3 +176,35 @@ void le_senha(char *senha){
         continue;
 }
 
+
+int valida_telefone(char* telefone){
+    int tamanho = strlen(telefone);
+    if (tamanho != 12) {
+        return 0;
+    }
+
+    for (int i = 0; i < tamanho - 1; i++) {
+        if (!isdigit(telefone[i])) {
+            return 0;
+        }
+    }
+
+    return 1;
+}
+
+void le_telefone(char *telefone){
+    printf("|||                    Digite o telefoe do funcionário: ");
+    fgets(telefone, 22, stdin);
+    while (!valida_telefone(telefone)){
+        if( strchr(telefone, '\n') == NULL )
+        while (getchar() != '\n')
+            continue;
+        printf("|||                    Telefone inválido\n");
+        printf("|||                    Digite o telefone do funcionário: ");
+        fgets(telefone, 22, stdin);
+    }
+    if( strchr(telefone, '\n') == NULL )
+        while (getchar() != '\n')
+            continue;
+}
+
