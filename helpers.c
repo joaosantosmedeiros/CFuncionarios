@@ -3,15 +3,15 @@
 #include <ctype.h>
 #include <string.h>
 
-int valida_nome(char *nome)
-{
+int valida_nome(char *nome){
     int tam;
 
     tam = strlen(nome);
-    for (int i = 0; i < tam - 1; i++)
-    {
-        if (!eh_letra(nome[i]))
-        {
+    if(tam < 5){
+        return 0;
+    }
+    for (int i = 0; i < tam - 1; i++){
+        if (!eh_letra(nome[i])){
             return 0;
         }
     }
@@ -20,16 +20,13 @@ int valida_nome(char *nome)
 
 int eh_letra(char c)
 {
-    if (c >= 'A' && c <= 'Z')
-    {
+    if (c >= 'A' && c <= 'Z'){
         return 1;
     }
-    else if (c >= 'a' && c <= 'z')
-    {
+    else if (c >= 'a' && c <= 'z'){
         return 1;
     }
-    else if (c == ' ' || c == 13)
-    {
+    else if (c == ' ' || c == 13){
         return 1;
     }
     return 0;
@@ -40,11 +37,12 @@ void le_nome(char *nome){
     fgets(nome, 51, stdin);
     while (!valida_nome(nome)){
         printf("|||                    Caracteres inválidos\n");
-        printf("|||                    Informe o nome novamente\n|||\n");
+        printf("|||                    Informe o nome novamente\n|||");
         printf("|||                    Digite o nome do funcionário: ");
         fgets(nome, 51, stdin);
     }
 }
+
 
 int valida_cpf(char *cpf) {
     if (strlen(cpf) != 11) {
@@ -117,6 +115,9 @@ void le_email(char *email){
         printf("|||                    Digite o email do funcionário: ");
         fgets(email, 51, stdin);
     }
+    if( strchr(email, '\n') == NULL )
+        while (getchar() != '\n')
+            continue;
 }
 
 int valida_email(char *email) {
@@ -149,3 +150,29 @@ int valida_email(char *email) {
 
     return temArroba;
 }
+
+
+void le_senha(char *senha){
+    char confirm_senha[51];
+    printf("|||                    Digite a senha do funcionário: ");
+    fgets(senha, 51, stdin);
+
+    while(strlen(senha) < 6){
+        printf("|||                    Senha muito curta. Mínimo de 5 caracteres:\n");
+        printf("|||                    Digite a senha do funcionário: ");
+        fgets(senha, 51, stdin);
+    }
+
+    printf("|||                    Digite a senha novamente: ");
+    fgets(confirm_senha, 51, stdin);
+
+    while (strncmp(senha, confirm_senha, 51) != 0){
+        printf("|||                    As senhas não conferem. Digite novamente: ");
+        fgets(confirm_senha, 51, stdin);
+    };
+    
+    if( strchr(senha, '\n') == NULL )
+    while (getchar() != '\n')
+        continue;
+}
+

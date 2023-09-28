@@ -11,6 +11,8 @@ void le_cpf(char*);
 int valida_email(char*);
 void le_email(char*);
 
+void le_senha(char*);
+
 #endif
 
 
