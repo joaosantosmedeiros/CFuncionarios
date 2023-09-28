@@ -8,6 +8,9 @@ void le_nome(char*);
 int valida_cpf(char*);
 void le_cpf(char*);
 
+int valida_email(char*);
+void le_email(char*);
+
 #endif
 
 

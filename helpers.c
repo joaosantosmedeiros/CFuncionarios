@@ -107,3 +107,45 @@ void le_cpf(char *cpf){
         while (getchar() != '\n')
             continue;
 }
+
+
+void le_email(char *email){
+    printf("|||                    Digite o email do funcionário: ");
+    fgets(email, 51, stdin);
+    while (!valida_email(email)){
+        printf("|||                    Email inválido\n");
+        printf("|||                    Digite o email do funcionário: ");
+        fgets(email, 51, stdin);
+    }
+}
+
+int valida_email(char *email) {
+    int tamanho = strlen(email);
+    int temArroba = 0;
+
+    // Verifica se o e-mail é vazio ou muito curto
+    if (tamanho == 0 || tamanho < 5) {
+        return 0;
+    }
+
+    for (int i = 0; i < tamanho; i++) {
+        // Verifica se o caractere é um "@" e se é o único encontrado
+        if (email[i] == '@') {
+            if (temArroba) {
+                return 0; // Mais de um "@" encontrado
+            }
+            temArroba = 1;
+        } else if (email[i] == '.') {
+            // Verifica se há um ponto "." após o "@"
+            if (!temArroba) {
+                return 0;
+            }
+        }
+    }
+
+    if (email[0] == '@' || email[tamanho - 1] == '@') {
+        return 0;
+    }
+
+    return temArroba;
+}
