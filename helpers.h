@@ -16,6 +16,6 @@ void le_senha(char*);
 int valida_telefone(char*);
 void le_telefone(char*);
 
+void le_endereco(char*);
+
 #endif
-
-

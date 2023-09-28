@@ -89,7 +89,7 @@ void buscar_funcionario(void) {
 
 
 void cadastrar_funcionario(void) {
-    char cpf[13], nome[51], email[51], senha[30], telefone[30], endereco[50];
+    char cpf[13], nome[51], email[51], senha[30], telefone[30], endereco[51];
     system("clear||cls");
     printf("\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
@@ -117,9 +117,8 @@ void cadastrar_funcionario(void) {
     le_senha(senha);
     printf("|||                                                                         |||\n");
     le_telefone(telefone);
-    printf("|||                    Digite o endereco do funcionário: ");
-    scanf("%s", endereco);
-    getchar();
+    printf("|||                                                                         |||\n");
+    le_endereco(endereco);
     printf("|||                                                                         |||\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
     printf("\n");

@@ -193,7 +193,7 @@ int valida_telefone(char* telefone){
 }
 
 void le_telefone(char *telefone){
-    printf("|||                    Digite o telefoe do funcionário: ");
+    printf("|||                    Digite o telefone do funcionário: ");
     fgets(telefone, 22, stdin);
     while (!valida_telefone(telefone)){
         if( strchr(telefone, '\n') == NULL )
@@ -206,5 +206,21 @@ void le_telefone(char *telefone){
     if( strchr(telefone, '\n') == NULL )
         while (getchar() != '\n')
             continue;
+}
+
+
+void le_endereco(char *endereco){
+    printf("|||                    Digite o endereço do funcionário: ");
+    fgets(endereco, 51, stdin);
+
+    while(strlen(endereco) < 6){
+        printf("|||                    Endereço muito curto. Mínimo de 5 caracteres:\n");
+        printf("|||                    Digite o endereço do funcionário: ");
+        fgets(endereco, 51, stdin);
+    }
+
+    if( strchr(endereco, '\n') == NULL )
+    while (getchar() != '\n')
+        continue;
 }
 
