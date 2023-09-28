@@ -57,7 +57,7 @@ void modulo_funcionarios(void) {
 
 
 void buscar_funcionario(void) {
-    char cpf[11];
+    char cpf[13];
     system("clear||cls");
     printf("\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
@@ -76,8 +76,7 @@ void buscar_funcionario(void) {
     printf("|||_________________________________________________________________________|||\n");
     printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");
-    printf("|||                    Digite o CPF do funcionário: ");
-    scanf("%s", cpf);
+    le_cpf(cpf);
     getchar();
     printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");
@@ -128,7 +127,7 @@ void cadastrar_funcionario(void) {
 
 
 void atualizar_funcionario(void) {
-    char cpf[11], nome[30], email[30], senha[30], confirm_senha[30], telefone[30], endereco[50];
+    char cpf[13], nome[51], email[51], senha[30], telefone[30], endereco[51];
     system("clear||cls");
     printf("\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
@@ -147,21 +146,17 @@ void atualizar_funcionario(void) {
     printf("|||_________________________________________________________________________|||\n");
     printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");
-    printf("|||             Digite o CPF do funcionário a ser atualizado: ");
-    scanf("%s", cpf);
-    printf("|||             Digite o novo nome do funcionário: ");
-    scanf("%s", nome);
-    printf("|||             Digite o novo email do funcionário: ");
-    scanf("%s", email);
-    printf("|||             Digite a nova senha do funcionário: ");
-    scanf("%s", senha);
-    printf("|||             Confirme a nova senha do funcionário: ");
-    scanf("%s", confirm_senha);
-    printf("|||             Digite o novo telefone do funcionário: ");
-    scanf("%s", telefone);
-    printf("|||             Digite o novo endereco do funcionário: ");
-    scanf("%s", endereco);
-    getchar();
+    le_cpf(cpf);
+    printf("|||                                                                         |||\n");
+    le_nome(nome);
+    printf("|||                                                                         |||\n");
+    le_email(email);
+    printf("|||                                                                         |||\n");
+    le_senha(senha);
+    printf("|||                                                                         |||\n");
+    le_telefone(telefone);
+    printf("|||                                                                         |||\n");
+    le_endereco(endereco);
     printf("|||                                                                         |||\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
     printf("\n");
@@ -171,7 +166,7 @@ void atualizar_funcionario(void) {
 
 
 void deletar_funcionario(void) {
-    char cpf[11];
+    char cpf[13];
     system("clear||cls");
     printf("\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
@@ -190,8 +185,7 @@ void deletar_funcionario(void) {
     printf("|||_________________________________________________________________________|||\n");
     printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");
-    printf("|||                         Digite o CPF do funcionário: ");
-    scanf("%s", cpf);
+    le_cpf(cpf);
     getchar();
     printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");

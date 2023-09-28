@@ -3,6 +3,7 @@
 #include <ctype.h>
 #include <string.h>
 
+// Helpers Funcionários
 int valida_nome(char *nome){
     int tam;
 
@@ -37,7 +38,7 @@ void le_nome(char *nome){
     fgets(nome, 51, stdin);
     while (!valida_nome(nome)){
         printf("|||                    Caracteres inválidos\n");
-        printf("|||                    Informe o nome novamente\n|||");
+        printf("|||                    Informe o nome novamente\n");
         printf("|||                    Digite o nome do funcionário: ");
         fgets(nome, 51, stdin);
     }
@@ -45,7 +46,7 @@ void le_nome(char *nome){
 
 
 int valida_cpf(char *cpf) {
-    if (strlen(cpf) != 11) {
+    if (strlen(cpf) != 12) {
         return 0;
     }
 
@@ -91,15 +92,14 @@ int valida_cpf(char *cpf) {
 
 void le_cpf(char *cpf){
     printf("|||                    Digite o CPF do funcionário: ");
-    fgets(cpf, 12, stdin);
-    cpf[strcspn(cpf, "\n")] = 0;
+    fgets(cpf, 20, stdin);
     while (!valida_cpf(cpf)){
         if( strchr(cpf, '\n') == NULL )
         while (getchar() != '\n')
             continue;
         printf("|||                    CPF inválido\n");
         printf("|||                    Digite o CPF do funcionário: ");
-        fgets(cpf, 12, stdin);
+        fgets(cpf, 20, stdin);
     }
     if( strchr(cpf, '\n') == NULL )
         while (getchar() != '\n')
