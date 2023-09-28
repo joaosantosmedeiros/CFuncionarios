@@ -224,3 +224,35 @@ void le_endereco(char *endereco){
         continue;
 }
 
+
+// Helpers Dpt.
+int valida_id(char* id){
+    int tamanho = strlen(id);
+    if (tamanho < 2 || tamanho > 5) {
+        return 0;
+    }
+
+    for (int i = 0; i < tamanho - 1; i++) {
+        if (!isdigit(id[i])) {
+            return 0;
+        }
+    }
+
+    return 1;
+}
+
+void le_id(char *id){
+    printf("|||                    Digite o id do departamento: ");
+    fgets(id, 10, stdin);
+    while (!valida_id(id)){
+        if( strchr(id, '\n') == NULL )
+        while (getchar() != '\n')
+            continue;
+        printf("|||                    Id inválido\n");
+        printf("|||                    Digite o id do departamento: ");
+        fgets(id, 10, stdin);
+    }
+    if( strchr(id, '\n') == NULL )
+        while (getchar() != '\n')
+            continue;
+}

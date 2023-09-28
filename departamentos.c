@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "departamentos.h"
+#include "helpers.h"
 
 void modulo_departamentos(void) {
     char op;
@@ -56,7 +57,7 @@ void modulo_departamentos(void) {
 
 
 void buscar_departamento(void) {
-    int id_departamento;
+    char id[10];
     system("clear||cls");
     printf("\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
@@ -75,9 +76,7 @@ void buscar_departamento(void) {
     printf("|||_________________________________________________________________________|||\n");
     printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");
-    printf("|||                    Digite o ID do departamento: ");
-    scanf("%d", &id_departamento);
-    getchar();
+    le_id(id);
     printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");

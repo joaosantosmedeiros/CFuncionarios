@@ -1,6 +1,7 @@
 #ifndef HELPERS_H
 #define HELPERS_H
 
+// Funcionarios
 int valida_nome(char*);
 int eh_letra(char);
 void le_nome(char*);
@@ -18,4 +19,8 @@ void le_telefone(char*);
 
 void le_endereco(char*);
 
+
+// Dept.
+void le_id(char*);
+int valida_id(char*);
 #endif
