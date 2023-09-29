@@ -256,3 +256,31 @@ void le_id(char *id){
         while (getchar() != '\n')
             continue;
 }
+
+
+int valida_nome_dpt(char *nome){
+    int tam;
+
+    tam = strlen(nome);
+    if(tam < 5){
+        return 0;
+    }
+    for (int i = 0; i < tam - 1; i++){
+        if (!eh_letra(nome[i])){
+            return 0;
+        }
+    }
+    return 1;
+}
+
+void le_nome_dpt(char *nome){
+    printf("|||                    Digite o nome do departamento: ");
+    fgets(nome, 51, stdin);
+    while (!valida_nome_dpt(nome)){
+        printf("|||                    Caracteres inválidos\n");
+        printf("|||                    Informe o nome novamente\n");
+        printf("|||                    Digite o nome do departamento: ");
+        fgets(nome, 51, stdin);
+    }
+}
+

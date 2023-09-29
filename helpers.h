@@ -23,4 +23,8 @@ void le_endereco(char*);
 // Dept.
 void le_id(char*);
 int valida_id(char*);
+
+int valida_nome_dpt(char*);
+void le_nome_dpt(char*);
+
 #endif

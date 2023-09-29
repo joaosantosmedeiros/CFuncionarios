@@ -87,7 +87,7 @@ void buscar_departamento(void) {
 
 
 void cadastrar_departamento(void) {
-    char sigla[3], nome[30];
+    char sigla[3], nome[51];
     system("clear||cls");
     printf("\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
@@ -106,8 +106,7 @@ void cadastrar_departamento(void) {
     printf("|||_________________________________________________________________________|||\n");
     printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");
-    printf("|||                    Digite o nome do departamento: ");
-    scanf("%s", nome);
+    le_nome_dpt(nome);
     printf("|||                    Digite a sigla do departamento: ");
     scanf("%s", sigla);
     getchar();
@@ -121,7 +120,7 @@ void cadastrar_departamento(void) {
 
 void atualizar_departamento(void) {
     int id_departamento;
-    char nome[30], sigla[30];
+    char nome[51], sigla[30];
     system("clear||cls");
     printf("\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
@@ -142,8 +141,8 @@ void atualizar_departamento(void) {
     printf("|||                                                                         |||\n");
     printf("|||             Digite o id do departamento a ser atualizado: ");
     scanf("%d", &id_departamento);
-    printf("|||             Digite o novo nome do departamento: ");
-    scanf("%s", nome);
+    printf("|||                                                                         |||\n");
+    le_nome_dpt(nome);
     printf("|||             Digite a nova sigla do departamento: ");
     scanf("%s", sigla);
     getchar();
