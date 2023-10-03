@@ -284,3 +284,18 @@ void le_nome_dpt(char *nome){
     }
 }
 
+
+void le_sigla(char *sigla){
+    printf("|||                    Digite a sigla do departamento: ");
+    fgets(sigla, 51, stdin);
+
+    while(strlen(sigla) != 4){
+        printf("|||                    Sigla deve possuir apenas 3 caracteres:\n");
+        printf("|||                    Digite a sigla do departamento: ");
+        fgets(sigla, 51, stdin);
+    }
+
+    if( strchr(sigla, '\n') == NULL )
+    while (getchar() != '\n')
+        continue;
+}

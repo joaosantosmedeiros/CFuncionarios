@@ -87,7 +87,7 @@ void buscar_departamento(void) {
 
 
 void cadastrar_departamento(void) {
-    char sigla[3], nome[51];
+    char sigla[10], nome[51];
     system("clear||cls");
     printf("\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
@@ -107,9 +107,8 @@ void cadastrar_departamento(void) {
     printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");
     le_nome_dpt(nome);
-    printf("|||                    Digite a sigla do departamento: ");
-    scanf("%s", sigla);
-    getchar();
+    printf("|||                                                                         |||\n");
+    le_sigla(sigla);
     printf("|||                                                                         |||\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
     printf("\n");
@@ -118,9 +117,8 @@ void cadastrar_departamento(void) {
 }
 
 
-void atualizar_departamento(void) {
-    int id_departamento;
-    char nome[51], sigla[30];
+void atualizar_departamento(void) {;
+    char nome[51], sigla[10], id[10];
     system("clear||cls");
     printf("\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
@@ -139,12 +137,11 @@ void atualizar_departamento(void) {
     printf("|||_________________________________________________________________________|||\n");
     printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");
-    printf("|||             Digite o id do departamento a ser atualizado: ");
-    scanf("%d", &id_departamento);
+    le_id(id);
     printf("|||                                                                         |||\n");
     le_nome_dpt(nome);
-    printf("|||             Digite a nova sigla do departamento: ");
-    scanf("%s", sigla);
+    printf("|||                                                                         |||\n");
+    le_sigla(sigla);
     getchar();
     printf("|||                                                                         |||\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
@@ -155,7 +152,7 @@ void atualizar_departamento(void) {
 
 
 void deletar_departamento(void) {
-    int id_departamento;
+    char id[10];
     system("clear||cls");
     printf("\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
@@ -174,9 +171,7 @@ void deletar_departamento(void) {
     printf("|||_________________________________________________________________________|||\n");
     printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");
-    printf("|||                         Digite o ID do departamento: ");
-    scanf("%d", &id_departamento);
-    getchar();
+    le_id(id);
     printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");

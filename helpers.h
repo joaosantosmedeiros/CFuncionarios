@@ -27,4 +27,6 @@ int valida_id(char*);
 int valida_nome_dpt(char*);
 void le_nome_dpt(char*);
 
+void le_sigla(char*);
+
 #endif
