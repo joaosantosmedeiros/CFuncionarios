@@ -33,18 +33,6 @@ int eh_letra(char c)
     return 0;
 }
 
-void le_nome(char *nome){
-    printf("|||                    Digite o nome do funcionário: ");
-    fgets(nome, 51, stdin);
-    while (!valida_nome(nome)){
-        printf("|||                    Caracteres inválidos\n");
-        printf("|||                    Informe o nome novamente\n");
-        printf("|||                    Digite o nome do funcionário: ");
-        fgets(nome, 51, stdin);
-    }
-}
-
-
 int valida_cpf(char *cpf) {
     if (strlen(cpf) != 12) {
         return 0;
@@ -90,36 +78,6 @@ int valida_cpf(char *cpf) {
     return 1;
 }
 
-void le_cpf(char *cpf){
-    printf("|||                    Digite o CPF do funcionário: ");
-    fgets(cpf, 20, stdin);
-    while (!valida_cpf(cpf)){
-        if( strchr(cpf, '\n') == NULL )
-        while (getchar() != '\n')
-            continue;
-        printf("|||                    CPF inválido\n");
-        printf("|||                    Digite o CPF do funcionário: ");
-        fgets(cpf, 20, stdin);
-    }
-    if( strchr(cpf, '\n') == NULL )
-        while (getchar() != '\n')
-            continue;
-}
-
-
-void le_email(char *email){
-    printf("|||                    Digite o email do funcionário: ");
-    fgets(email, 51, stdin);
-    while (!valida_email(email)){
-        printf("|||                    Email inválido\n");
-        printf("|||                    Digite o email do funcionário: ");
-        fgets(email, 51, stdin);
-    }
-    if( strchr(email, '\n') == NULL )
-        while (getchar() != '\n')
-            continue;
-}
-
 int valida_email(char *email) {
     int tamanho = strlen(email);
     int temArroba = 0;
@@ -151,32 +109,6 @@ int valida_email(char *email) {
     return temArroba;
 }
 
-
-void le_senha(char *senha){
-    char confirm_senha[51];
-    printf("|||                    Digite a senha do funcionário: ");
-    fgets(senha, 51, stdin);
-
-    while(strlen(senha) < 6){
-        printf("|||                    Senha muito curta. Mínimo de 5 caracteres:\n");
-        printf("|||                    Digite a senha do funcionário: ");
-        fgets(senha, 51, stdin);
-    }
-
-    printf("|||                    Digite a senha novamente: ");
-    fgets(confirm_senha, 51, stdin);
-
-    while (strncmp(senha, confirm_senha, 51) != 0){
-        printf("|||                    As senhas não conferem. Digite novamente: ");
-        fgets(confirm_senha, 51, stdin);
-    };
-    
-    if( strchr(senha, '\n') == NULL )
-    while (getchar() != '\n')
-        continue;
-}
-
-
 int valida_telefone(char* telefone){
     int tamanho = strlen(telefone);
     if (tamanho != 12) {
@@ -190,38 +122,6 @@ int valida_telefone(char* telefone){
     }
 
     return 1;
-}
-
-void le_telefone(char *telefone){
-    printf("|||                    Digite o telefone do funcionário: ");
-    fgets(telefone, 22, stdin);
-    while (!valida_telefone(telefone)){
-        if( strchr(telefone, '\n') == NULL )
-        while (getchar() != '\n')
-            continue;
-        printf("|||                    Telefone inválido\n");
-        printf("|||                    Digite o telefone do funcionário: ");
-        fgets(telefone, 22, stdin);
-    }
-    if( strchr(telefone, '\n') == NULL )
-        while (getchar() != '\n')
-            continue;
-}
-
-
-void le_endereco(char *endereco){
-    printf("|||                    Digite o endereço do funcionário: ");
-    fgets(endereco, 51, stdin);
-
-    while(strlen(endereco) < 6){
-        printf("|||                    Endereço muito curto. Mínimo de 5 caracteres:\n");
-        printf("|||                    Digite o endereço do funcionário: ");
-        fgets(endereco, 51, stdin);
-    }
-
-    if( strchr(endereco, '\n') == NULL )
-    while (getchar() != '\n')
-        continue;
 }
 
 
