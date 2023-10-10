@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "departamentos.h"
 #include "helpers.h"
+#include <string.h>
 
 void modulo_departamentos(void) {
     char op;
@@ -180,3 +181,42 @@ void deletar_departamento(void) {
     getchar();
 }
 
+void le_id(char *id){
+    printf("|||                    Digite o id do departamento: ");
+    fgets(id, 10, stdin);
+    while (!valida_id(id)){
+        if( strchr(id, '\n') == NULL )
+        while (getchar() != '\n')
+            continue;
+        printf("|||                    Id inválido\n");
+        printf("|||                    Digite o id do departamento: ");
+        fgets(id, 10, stdin);
+    }
+    if( strchr(id, '\n') == NULL )
+        while (getchar() != '\n')
+            continue;
+}
+void le_nome_dpt(char *nome){
+    printf("|||                    Digite o nome do departamento: ");
+    fgets(nome, 51, stdin);
+    while (!valida_nome_dpt(nome)){
+        printf("|||                    Caracteres inválidos\n");
+        printf("|||                    Informe o nome novamente\n");
+        printf("|||                    Digite o nome do departamento: ");
+        fgets(nome, 51, stdin);
+    }
+}
+void le_sigla(char *sigla){
+    printf("|||                    Digite a sigla do departamento: ");
+    fgets(sigla, 51, stdin);
+
+    while(strlen(sigla) != 4){
+        printf("|||                    Sigla deve possuir apenas 3 caracteres:\n");
+        printf("|||                    Digite a sigla do departamento: ");
+        fgets(sigla, 51, stdin);
+    }
+
+    if( strchr(sigla, '\n') == NULL )
+    while (getchar() != '\n')
+        continue;
+}

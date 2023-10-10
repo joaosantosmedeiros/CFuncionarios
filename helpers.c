@@ -141,23 +141,6 @@ int valida_id(char* id){
     return 1;
 }
 
-void le_id(char *id){
-    printf("|||                    Digite o id do departamento: ");
-    fgets(id, 10, stdin);
-    while (!valida_id(id)){
-        if( strchr(id, '\n') == NULL )
-        while (getchar() != '\n')
-            continue;
-        printf("|||                    Id inválido\n");
-        printf("|||                    Digite o id do departamento: ");
-        fgets(id, 10, stdin);
-    }
-    if( strchr(id, '\n') == NULL )
-        while (getchar() != '\n')
-            continue;
-}
-
-
 int valida_nome_dpt(char *nome){
     int tam;
 
@@ -171,31 +154,4 @@ int valida_nome_dpt(char *nome){
         }
     }
     return 1;
-}
-
-void le_nome_dpt(char *nome){
-    printf("|||                    Digite o nome do departamento: ");
-    fgets(nome, 51, stdin);
-    while (!valida_nome_dpt(nome)){
-        printf("|||                    Caracteres inválidos\n");
-        printf("|||                    Informe o nome novamente\n");
-        printf("|||                    Digite o nome do departamento: ");
-        fgets(nome, 51, stdin);
-    }
-}
-
-
-void le_sigla(char *sigla){
-    printf("|||                    Digite a sigla do departamento: ");
-    fgets(sigla, 51, stdin);
-
-    while(strlen(sigla) != 4){
-        printf("|||                    Sigla deve possuir apenas 3 caracteres:\n");
-        printf("|||                    Digite a sigla do departamento: ");
-        fgets(sigla, 51, stdin);
-    }
-
-    if( strchr(sigla, '\n') == NULL )
-    while (getchar() != '\n')
-        continue;
 }
