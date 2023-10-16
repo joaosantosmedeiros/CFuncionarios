@@ -14,4 +14,13 @@ void le_senha(char*);
 void le_telefone(char*);
 void le_endereco(char*);
 
+struct funcionario {
+    char nome[50];
+    char cpf[13];
+    char email[51];
+    char senha[30];
+    char telefone[30];
+    char endereco[51];
+};
+
 #endif

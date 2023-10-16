@@ -12,4 +12,11 @@ void le_id(char*);
 void le_nome_dpt(char*);
 void le_sigla(char*);
 
+struct departamento{
+    int id;
+    char[10] sigla;
+    char[51] nome;
+};
+
+
 #endif
