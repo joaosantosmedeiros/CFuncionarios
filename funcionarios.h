@@ -14,6 +14,8 @@ void le_senha(char*);
 void le_telefone(char*);
 void le_endereco(char*);
 
+typedef struct funcionario Funcionario;
+
 struct funcionario {
     char nome[50];
     char cpf[13];

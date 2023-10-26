@@ -12,10 +12,12 @@ void le_id(char*);
 void le_nome_dpt(char*);
 void le_sigla(char*);
 
-struct departamento{
+typedef struct departamento Departamento;
+
+struct departamento {
     int id;
-    char[10] sigla;
-    char[51] nome;
+    char sigla[10];
+    char nome[51];
 };
 
 
