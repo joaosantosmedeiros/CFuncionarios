@@ -60,6 +60,7 @@ void modulo_funcionarios(void) {
 
 void buscar_funcionario(void) {
     char cpf[13];
+    Funcionario* func;
     system("clear||cls");
     printf("\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
@@ -80,6 +81,8 @@ void buscar_funcionario(void) {
     printf("|||                                                                         |||\n");
     le_cpf(cpf);
     getchar();
+    func = buscaFuncionario(cpf);
+    exibeFuncionario(func);
     printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
@@ -90,7 +93,7 @@ void buscar_funcionario(void) {
 
 
 void cadastrar_funcionario(void) {
-    char cpf[13], nome[51], email[51], senha[30], telefone[30], endereco[51];
+    Funcionario* func;
     system("clear||cls");
     printf("\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
@@ -109,17 +112,9 @@ void cadastrar_funcionario(void) {
     printf("|||_________________________________________________________________________|||\n");
     printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");
-    le_cpf(cpf);
-    printf("|||                                                                         |||\n");
-    le_nome(nome);
-    printf("|||                                                                         |||\n");
-    le_email(email);
-    printf("|||                                                                         |||\n");
-    le_senha(senha);
-    printf("|||                                                                         |||\n");
-    le_telefone(telefone);
-    printf("|||                                                                         |||\n");
-    le_endereco(endereco);
+    func = preencheFuncionario();
+    gravaFuncionario(func);
+    free(func);
     printf("|||                                                                         |||\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
     printf("\n");
@@ -286,4 +281,94 @@ void le_endereco(char *endereco){
     if( strchr(endereco, '\n') == NULL )
     while (getchar() != '\n')
         continue;
+}
+
+
+Funcionario* preencheFuncionario(void) {
+    Funcionario* func;
+    func = (Funcionario*) malloc(sizeof(Funcionario));
+    le_cpf(func->cpf);
+    printf("|||                                                                         |||\n");
+    le_nome(func->nome);
+    printf("|||                                                                         |||\n");
+    le_email(func->email);
+    printf("|||                                                                         |||\n");
+    le_senha(func->senha);
+    printf("|||                                                                         |||\n");
+    le_telefone(func->telefone);
+    printf("|||                                                                         |||\n");
+    le_endereco(func->endereco);
+    
+    size_t len = strlen(func->cpf);
+    if (len > 0 && func->cpf[len - 1] == '\n') {
+        func->cpf[len - 1] = '\0';
+    }
+    len = strlen(func->nome);
+    if (len > 0 && func->nome[len - 1] == '\n') {
+        func->nome[len - 1] = '\0';
+    }
+    len = strlen(func->email);
+    if (len > 0 && func->email[len - 1] == '\n') {
+        func->email[len - 1] = '\0';
+    }
+    len = strlen(func->senha);
+    if (len > 0 && func->senha[len - 1] == '\n') {
+        func->senha[len - 1] = '\0';
+    }
+    len = strlen(func->telefone);
+    if (len > 0 && func->telefone[len - 1] == '\n') {
+        func->telefone[len - 1] = '\0';
+    }
+    len = strlen(func->endereco);
+    if (len > 0 && func->endereco[len - 1] == '\n') {
+        func->endereco[len - 1] = '\0';
+    }
+
+    return func;
+}
+
+void gravaFuncionario(Funcionario* func) {
+  FILE* fp;
+  fp = fopen("funcionarios.dat", "ab");
+  if (fp == NULL) {
+    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Não é possível continuar este programa...\n");
+    exit(1);
+  }
+  fwrite(func, sizeof(Funcionario), 1, fp);
+  fclose(fp);
+}
+
+Funcionario* buscaFuncionario(char* cpf) {
+  FILE* fp;
+  Funcionario* func;
+  func = (Funcionario*) malloc(sizeof(Funcionario));
+  fp = fopen("funcionarios.dat", "rb");
+  if (fp == NULL) {
+    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Não é possível continuar este programa...\n");
+    exit(1);
+  }
+  while(!feof(fp)) {
+    fread(func, sizeof(Funcionario), 1, fp);
+    if (func->cpf == cpf) {
+      fclose(fp);
+      return func;
+    }
+  }
+  fclose(fp);
+  return NULL;
+}
+
+void exibeFuncionario(Funcionario* func) {
+  if (func == NULL) {
+    printf("\n= = = Funcionario Inexistente = = =\n");
+  } else {
+    printf("\n= = = Funcionario Cadastrado = = =\n");
+    printf("CPF: %s\n", func->cpf);
+    printf("Nome: %s\n", func->nome);
+    printf("Email: %s\n", func->email);
+    printf("Telefone: %s\n", func->telefone);
+    printf("Endereço: %s\n", func->endereco);
+  }
 }

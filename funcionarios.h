@@ -25,4 +25,10 @@ struct funcionario {
     char endereco[51];
 };
 
+Funcionario* preencheFuncionario(void);
+void gravaFuncionario(Funcionario*);
+
+Funcionario* buscaFuncionario(char*);
+void exibeFuncionario(Funcionario*);
+
 #endif
