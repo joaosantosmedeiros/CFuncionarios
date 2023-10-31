@@ -8,7 +8,6 @@ void atualizar_departamento(void);
 void deletar_departamento(void);
 
 
-void le_id(char*);
 void le_nome_dpt(char*);
 void le_sigla(char*);
 
@@ -19,6 +18,12 @@ struct departamento {
     char sigla[10];
     char nome[51];
 };
+
+Departamento* preencheDepartamento(void);
+void gravaDepartamento(Departamento*);
+
+Departamento* buscaDepartamento(char*);
+void exibeDepartamento(Departamento*);
 
 
 #endif

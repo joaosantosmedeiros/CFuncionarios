@@ -3,6 +3,7 @@
 #include "departamentos.h"
 #include "helpers.h"
 #include <string.h>
+#include <time.h>
 
 void modulo_departamentos(void) {
     char op;
@@ -58,7 +59,8 @@ void modulo_departamentos(void) {
 
 
 void buscar_departamento(void) {
-    char id[10];
+    char sigla[10];
+    Departamento* dept;
     system("clear||cls");
     printf("\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
@@ -77,10 +79,10 @@ void buscar_departamento(void) {
     printf("|||_________________________________________________________________________|||\n");
     printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");
-    le_id(id);
-    printf("|||                                                                         |||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+    le_sigla(sigla);
+    getchar();
+    dept = buscaDepartamento(sigla);
+    exibeDepartamento(dept);
     printf("\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
@@ -88,7 +90,7 @@ void buscar_departamento(void) {
 
 
 void cadastrar_departamento(void) {
-    char sigla[10], nome[51];
+    Departamento* dept;
     system("clear||cls");
     printf("\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
@@ -107,9 +109,9 @@ void cadastrar_departamento(void) {
     printf("|||_________________________________________________________________________|||\n");
     printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");
-    le_nome_dpt(nome);
-    printf("|||                                                                         |||\n");
-    le_sigla(sigla);
+    dept = preencheDepartamento();
+    gravaDepartamento(dept);
+    free(dept);
     printf("|||                                                                         |||\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
     printf("\n");
@@ -119,7 +121,8 @@ void cadastrar_departamento(void) {
 
 
 void atualizar_departamento(void) {;
-    char nome[51], sigla[10], id[10];
+    char nome[51], sigla[10];
+    int id;
     system("clear||cls");
     printf("\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
@@ -138,7 +141,8 @@ void atualizar_departamento(void) {;
     printf("|||_________________________________________________________________________|||\n");
     printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");
-    le_id(id);
+    printf("|||                    Digite o id do departamento: ");
+    scanf("%d", &id);
     printf("|||                                                                         |||\n");
     le_nome_dpt(nome);
     printf("|||                                                                         |||\n");
@@ -153,7 +157,7 @@ void atualizar_departamento(void) {;
 
 
 void deletar_departamento(void) {
-    char id[10];
+    int id;
     system("clear||cls");
     printf("\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
@@ -172,7 +176,8 @@ void deletar_departamento(void) {
     printf("|||_________________________________________________________________________|||\n");
     printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");
-    le_id(id);
+    printf("|||                    Digite o id do departamento: ");
+    scanf("%d", &id);
     printf("|||                                                                         |||\n");
     printf("|||                                                                         |||\n");
     printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
@@ -181,21 +186,6 @@ void deletar_departamento(void) {
     getchar();
 }
 
-void le_id(char *id){
-    printf("|||                    Digite o id do departamento: ");
-    fgets(id, 10, stdin);
-    while (!valida_id(id)){
-        if( strchr(id, '\n') == NULL )
-        while (getchar() != '\n')
-            continue;
-        printf("|||                    Id inválido\n");
-        printf("|||                    Digite o id do departamento: ");
-        fgets(id, 10, stdin);
-    }
-    if( strchr(id, '\n') == NULL )
-        while (getchar() != '\n')
-            continue;
-}
 void le_nome_dpt(char *nome){
     printf("|||                    Digite o nome do departamento: ");
     fgets(nome, 51, stdin);
@@ -219,4 +209,81 @@ void le_sigla(char *sigla){
     if( strchr(sigla, '\n') == NULL )
     while (getchar() != '\n')
         continue;
+}
+
+
+
+Departamento* preencheDepartamento(void) {
+    Departamento* dept;
+    dept = (Departamento*) malloc(sizeof(Departamento));
+    le_nome_dpt(dept->nome);
+    printf("|||                                                                         |||\n");
+    le_sigla(dept->sigla);
+    
+    size_t len = strlen(dept->nome);
+    if (len > 0 && dept->nome[len - 1] == '\n') {
+        dept->nome[len - 1] = '\0';
+    }
+    len = strlen(dept->sigla);
+    if (len > 0 && dept->sigla[len - 1] == '\n') {
+        dept->sigla[len - 1] = '\0';
+    }
+    
+    unsigned int semente = (unsigned int)time(NULL);
+    srand(semente);
+    dept->id = rand();
+
+    return dept;
+}
+
+void gravaDepartamento(Departamento* dept) {
+  FILE* fp;
+  fp = fopen("departamentos.dat", "ab");
+  if (fp == NULL) {
+    printf("|||                         Ops! Ocorreu um erro na abertura do arquivo!    |||\n");
+    printf("|||                         Não é possível continuar este programa...       |||\n");
+    exit(1);
+  }
+  if(buscaDepartamento(dept->sigla  ) != NULL){
+    printf("|||                         Erro! Sigla já cadastrada!                        |||\n");
+  }else{
+    fwrite(dept, sizeof(Departamento), 1, fp);
+  }
+  fclose(fp);
+}
+
+Departamento* buscaDepartamento(char* sigla) {
+  size_t len = strlen(sigla);
+  if (len > 0 && sigla[len - 1] == '\n') {
+    sigla[len - 1] = '\0';
+  }
+  FILE* fp;
+  Departamento* dept;
+  dept = (Departamento*) malloc(sizeof(Departamento));
+  fp = fopen("departamentos.dat", "rb");
+  if (fp == NULL) {
+    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Não é possível continuar este programa...\n");
+    exit(1);
+  }
+  while(!feof(fp)) {
+    fread(dept, sizeof(Departamento), 1, fp);
+    if (strcmp(dept->sigla, sigla) == 0) {
+      fclose(fp);
+      return dept;
+    }
+  }
+  fclose(fp);
+  return NULL;
+}
+
+void exibeDepartamento(Departamento* dept) {
+  if (dept == NULL) {
+    printf("\n= = = Departamento Inexistente = = =\n");
+  } else {
+    printf("\n= = = Departamento Cadastrado = = =\n");
+    printf("Id: %d\n", dept->id);
+    printf("Nome: %s\n", dept->nome);
+    printf("Sigla: %s\n", dept->sigla);
+  }
 }
