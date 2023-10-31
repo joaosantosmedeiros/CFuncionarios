@@ -83,9 +83,6 @@ void buscar_funcionario(void) {
     getchar();
     func = buscaFuncionario(cpf);
     exibeFuncionario(func);
-    printf("|||                                                                         |||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
     printf("\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
@@ -340,6 +337,10 @@ void gravaFuncionario(Funcionario* func) {
 }
 
 Funcionario* buscaFuncionario(char* cpf) {
+  size_t len = strlen(cpf);
+  if (len > 0 && cpf[len - 1] == '\n') {
+    cpf[len - 1] = '\0';
+  }
   FILE* fp;
   Funcionario* func;
   func = (Funcionario*) malloc(sizeof(Funcionario));
@@ -351,7 +352,7 @@ Funcionario* buscaFuncionario(char* cpf) {
   }
   while(!feof(fp)) {
     fread(func, sizeof(Funcionario), 1, fp);
-    if (func->cpf == cpf) {
+    if (strcmp(func->cpf, cpf) == 0) {
       fclose(fp);
       return func;
     }
