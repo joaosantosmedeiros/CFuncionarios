@@ -328,11 +328,15 @@ void gravaFuncionario(Funcionario* func) {
   FILE* fp;
   fp = fopen("funcionarios.dat", "ab");
   if (fp == NULL) {
-    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-    printf("Não é possível continuar este programa...\n");
+    printf("|||                         Ops! Ocorreu um erro na abertura do arquivo!    |||\n");
+    printf("|||                         Não é possível continuar este programa...       |||\n");
     exit(1);
   }
-  fwrite(func, sizeof(Funcionario), 1, fp);
+  if(buscaFuncionario(func->cpf) != NULL){
+    printf("|||                         Erro! CPF já cadastrado!                        |||\n");
+  }else{
+    fwrite(func, sizeof(Funcionario), 1, fp);
+  }
   fclose(fp);
 }
 
