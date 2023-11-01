@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "funcionarios.h"
 #include "departamentos.h"
-#include "desempenhos.h"
 
 void tela_menu_principal(void);
 void tela_sobre(void);
@@ -61,10 +60,14 @@ void tela_menu_principal(void) {
             modulo_departamentos();
             break;
         case '3':
-            modulo_desempenhos();
+            printf("\nEm desenvolvimento\n");
+            printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+            getchar();
             break;
         case '4':
             printf("\nEm desenvolvimento\n");
+            printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+            getchar();
             break;
         case '5':
             tela_sobre();
