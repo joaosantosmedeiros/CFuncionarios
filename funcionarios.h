@@ -23,6 +23,7 @@ struct funcionario {
     char senha[30];
     char telefone[30];
     char endereco[51];
+    unsigned short int status;
 };
 
 Funcionario* preencheFuncionario(void);
@@ -31,4 +32,5 @@ void gravaFuncionario(Funcionario*);
 Funcionario* buscaFuncionario(char*);
 void exibeFuncionario(Funcionario*);
 
+void excluiFuncionario(Funcionario*);
 #endif

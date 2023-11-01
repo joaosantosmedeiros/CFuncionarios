@@ -132,6 +132,7 @@ void atualizar_funcionario(void) {
 
 
 void deletar_funcionario(void) {
+    Funcionario* func;
     char cpf[13];
     system("clear||cls");
     printf("\n");
@@ -145,6 +146,9 @@ void deletar_funcionario(void) {
     printf("|||                         Remoção de Funcionários                         |||\n\n");
     le_cpf(cpf);
     getchar();
+    func = buscaFuncionario(cpf);
+    excluiFuncionario(func);
+    free(func);
     printf("\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
@@ -256,6 +260,7 @@ Funcionario* preencheFuncionario(void) {
     le_telefone(func->telefone);
     printf("\n");
     le_endereco(func->endereco);
+    func->status = 1;
     
     size_t len = strlen(func->cpf);
     if (len > 0 && func->cpf[len - 1] == '\n') {
@@ -317,7 +322,7 @@ Funcionario* buscaFuncionario(char* cpf) {
   }
   while(!feof(fp)) {
     fread(func, sizeof(Funcionario), 1, fp);
-    if (strcmp(func->cpf, cpf) == 0) {
+    if (strcmp(func->cpf, cpf) == 0 && func->status == 1) {
       fclose(fp);
       return func;
     }
@@ -327,7 +332,7 @@ Funcionario* buscaFuncionario(char* cpf) {
 }
 
 void exibeFuncionario(Funcionario* func) {
-  if (func == NULL) {
+  if (func == NULL || func->status == 0) {
     printf("= = = Funcionario Inexistente = = =\n");
   } else {
     printf("= = = Funcionario Cadastrado = = =\n");
@@ -336,5 +341,40 @@ void exibeFuncionario(Funcionario* func) {
     printf("Email: %s\n", func->email);
     printf("Telefone: %s\n", func->telefone);
     printf("Endereço: %s\n", func->endereco);
+    printf("Status: %d\n", func->status);
+  }
+}
+
+
+void excluiFuncionario(Funcionario* funcLido) {
+  FILE* fp;
+  Funcionario* funcArq;
+  int achou = 0;
+  if (funcLido == NULL) {
+    printf("Ops! O funcionário informado não existe!\n");
+  }
+  else {
+    funcArq = (Funcionario*) malloc(sizeof(Funcionario));
+    fp = fopen("funcionarios.dat", "r+b");
+    if (fp == NULL) {
+      printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+      printf("Não é possível continuar este programa...\n");
+      exit(1);
+    }
+    while(!feof(fp)) {
+      fread(funcArq, sizeof(Funcionario), 1, fp);
+      if ((strcmp(funcArq->cpf,funcLido->cpf) == 0) && (funcArq->status == 1)) {
+        achou = 1;
+        funcArq->status = 0;
+        fseek(fp, -1*sizeof(Funcionario), SEEK_CUR);
+        fwrite(funcArq, sizeof(Funcionario), 1, fp);
+        printf("\nFuncionario excluído com sucesso!!!\n");
+      }
+    }
+    if (!achou) {
+      printf("\nFuncionario não encontrado!\n");
+    }
+    fclose(fp);
+    free(funcArq);
   }
 }
