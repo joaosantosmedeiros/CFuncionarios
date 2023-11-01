@@ -128,6 +128,7 @@ void atualizar_departamento(void) {;
 
 
 void deletar_departamento(void) {
+    Departamento* dept;
     int id;
     system("clear||cls");
     printf("\n");
@@ -142,6 +143,9 @@ void deletar_departamento(void) {
     printf("Digite o id do departamento: ");
     scanf("%d", &id);
     getchar();
+    dept = buscaDepartamentoPorId(id);
+    excluiDepartamento(dept);
+    free(dept);
     printf("\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
@@ -181,6 +185,7 @@ Departamento* preencheDepartamento(void) {
     le_nome_dpt(dept->nome);
     printf("\n");
     le_sigla(dept->sigla);
+    dept->status = 1;
     
     size_t len = strlen(dept->nome);
     if (len > 0 && dept->nome[len - 1] == '\n') {
@@ -230,7 +235,28 @@ Departamento* buscaDepartamento(char* sigla) {
   }
   while(!feof(fp)) {
     fread(dept, sizeof(Departamento), 1, fp);
-    if (strcmp(dept->sigla, sigla) == 0) {
+    if (strcmp(dept->sigla, sigla) == 0 && dept->status == 1) {
+      fclose(fp);
+      return dept;
+    }
+  }
+  fclose(fp);
+  return NULL;
+}
+
+Departamento* buscaDepartamentoPorId(int id) {
+  FILE* fp;
+  Departamento* dept;
+  dept = (Departamento*) malloc(sizeof(Departamento));
+  fp = fopen("departamentos.dat", "rb");
+  if (fp == NULL) {
+    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Não é possível continuar este programa...\n");
+    exit(1);
+  }
+  while(!feof(fp)) {
+    fread(dept, sizeof(Departamento), 1, fp);
+    if ((dept->id == id) && (dept->status == 1)) {
       fclose(fp);
       return dept;
     }
@@ -240,12 +266,47 @@ Departamento* buscaDepartamento(char* sigla) {
 }
 
 void exibeDepartamento(Departamento* dept) {
-  if (dept == NULL) {
+  if (dept == NULL || dept->status == 0) {
     printf("= = = Departamento Inexistente = = =\n");
   } else {
     printf("= = = Departamento Cadastrado = = =\n");
     printf("Id: %d\n", dept->id);
     printf("Nome: %s\n", dept->nome);
     printf("Sigla: %s\n", dept->sigla);
+    printf("Status: %d\n", dept->status);
+  }
+}
+
+
+void excluiDepartamento(Departamento* deptLido) {
+  FILE* fp;
+  Departamento* deptArq;
+  int achou = 0;
+  if (deptLido == NULL) {
+    printf("Ops! O departamento informado não existe!\n");
+  }
+  else {
+    deptArq = (Departamento*) malloc(sizeof(Departamento));
+    fp = fopen("departamentos.dat", "r+b");
+    if (fp == NULL) {
+      printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+      printf("Não é possível continuar este programa...\n");
+      exit(1);
+    }
+    while(!feof(fp)) {
+      fread(deptArq, sizeof(Departamento), 1, fp);
+      if ((deptArq->id == deptLido->id) && (deptArq->status == 1)) {
+        achou = 1;
+        deptArq->status = 0;
+        fseek(fp, -1*sizeof(Departamento), SEEK_CUR);
+        fwrite(deptArq, sizeof(Departamento), 1, fp);
+        printf("\nDepartamento excluído com sucesso!!!\n");
+      }
+    }
+    if (!achou) {
+      printf("\nDepartamento não encontrado!\n");
+    }
+    fclose(fp);
+    free(deptArq);
   }
 }

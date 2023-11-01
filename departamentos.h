@@ -17,13 +17,16 @@ struct departamento {
     int id;
     char sigla[10];
     char nome[51];
+    unsigned short int status;
 };
 
 Departamento* preencheDepartamento(void);
 void gravaDepartamento(Departamento*);
 
 Departamento* buscaDepartamento(char*);
+Departamento* buscaDepartamentoPorId(int);
 void exibeDepartamento(Departamento*);
 
+void excluiDepartamento(Departamento*);
 
 #endif
