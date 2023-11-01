@@ -63,8 +63,6 @@ void buscar_funcionario(void) {
     Funcionario* func;
     system("clear||cls");
     printf("\n");
-    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
-    printf("|||                                                                         |||\n");
     printf("|||            ===================================================          |||\n");
     printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
     printf("|||            = = = =  Sistema de Gestão de Funcionários  = = = =          |||\n");
@@ -72,13 +70,7 @@ void buscar_funcionario(void) {
     printf("|||            ===================================================          |||\n");
     printf("|||            Developed by @joaosantosmedeiros -- since Ago, 2023          |||\n");
     printf("|||                                                                         |||\n");
-    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||                         Busca de Funcionários                           |||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||_________________________________________________________________________|||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||                                                                         |||\n");
+    printf("|||                         Busca de Funcionários                           |||\n\n");
     le_cpf(cpf);
     getchar();
     func = buscaFuncionario(cpf);
@@ -93,8 +85,6 @@ void cadastrar_funcionario(void) {
     Funcionario* func;
     system("clear||cls");
     printf("\n");
-    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
-    printf("|||                                                                         |||\n");
     printf("|||            ===================================================          |||\n");
     printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
     printf("|||            = = = =  Sistema de Gestão de Funcionários  = = = =          |||\n");
@@ -102,18 +92,10 @@ void cadastrar_funcionario(void) {
     printf("|||            ===================================================          |||\n");
     printf("|||            Developed by @joaosantosmedeiros -- since Ago, 2023          |||\n");
     printf("|||                                                                         |||\n");
-    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||                        Cadastro de Funcionários                         |||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||_________________________________________________________________________|||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||                                                                         |||\n");
+    printf("|||                        Cadastro de Funcionários                         |||\n\n");
     func = preencheFuncionario();
     gravaFuncionario(func);
     free(func);
-    printf("|||                                                                         |||\n");
-    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
     printf("\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
@@ -124,8 +106,6 @@ void atualizar_funcionario(void) {
     char cpf[13], nome[51], email[51], senha[30], telefone[30], endereco[51];
     system("clear||cls");
     printf("\n");
-    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
-    printf("|||                                                                         |||\n");
     printf("|||            ===================================================          |||\n");
     printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
     printf("|||            = = = =  Sistema de Gestão de Funcionários  = = = =          |||\n");
@@ -133,26 +113,18 @@ void atualizar_funcionario(void) {
     printf("|||            ===================================================          |||\n");
     printf("|||            Developed by @joaosantosmedeiros -- since Ago, 2023          |||\n");
     printf("|||                                                                         |||\n");
-    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||                        Atualização de Funcionários                      |||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||_________________________________________________________________________|||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||                                                                         |||\n");
+    printf("|||                        Atualização de Funcionários                      |||\n\n");
     le_cpf(cpf);
-    printf("|||                                                                         |||\n");
+    printf("\n");
     le_nome(nome);
-    printf("|||                                                                         |||\n");
+    printf("\n");
     le_email(email);
-    printf("|||                                                                         |||\n");
+    printf("\n");
     le_senha(senha);
-    printf("|||                                                                         |||\n");
+    printf("\n");
     le_telefone(telefone);
-    printf("|||                                                                         |||\n");
+    printf("\n");
     le_endereco(endereco);
-    printf("|||                                                                         |||\n");
-    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
     printf("\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
@@ -163,8 +135,6 @@ void deletar_funcionario(void) {
     char cpf[13];
     system("clear||cls");
     printf("\n");
-    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
-    printf("|||                                                                         |||\n");
     printf("|||            ===================================================          |||\n");
     printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
     printf("|||            = = = =  Sistema de Gestão de Funcionários  = = = =          |||\n");
@@ -172,18 +142,9 @@ void deletar_funcionario(void) {
     printf("|||            ===================================================          |||\n");
     printf("|||            Developed by @joaosantosmedeiros -- since Ago, 2023          |||\n");
     printf("|||                                                                         |||\n");
-    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||                         Remoção de Funcionários                         |||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||_________________________________________________________________________|||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||                                                                         |||\n");
+    printf("|||                         Remoção de Funcionários                         |||\n\n");
     le_cpf(cpf);
     getchar();
-    printf("|||                                                                         |||\n");
-    printf("|||                                                                         |||\n");
-    printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
     printf("\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
@@ -191,24 +152,24 @@ void deletar_funcionario(void) {
 
 
 void le_nome(char *nome){
-    printf("|||                    Digite o nome do funcionário: ");
+    printf("Digite o nome do funcionário: ");
     fgets(nome, 51, stdin);
     while (!valida_nome(nome)){
-        printf("|||                    Caracteres inválidos\n");
-        printf("|||                    Informe o nome novamente\n");
-        printf("|||                    Digite o nome do funcionário: ");
+        printf("Caracteres inválidos\n");
+        printf("Informe o nome novamente\n");
+        printf("Digite o nome do funcionário: ");
         fgets(nome, 51, stdin);
     }
 }
 void le_cpf(char *cpf){
-    printf("|||                    Digite o CPF do funcionário: ");
+    printf("Digite o CPF do funcionário: ");
     fgets(cpf, 20, stdin);
     while (!valida_cpf(cpf)){
         if( strchr(cpf, '\n') == NULL )
         while (getchar() != '\n')
             continue;
-        printf("|||                    CPF inválido\n");
-        printf("|||                    Digite o CPF do funcionário: ");
+        printf("CPF inválido\n");
+        printf("Digite o CPF do funcionário: ");
         fgets(cpf, 20, stdin);
     }
     if( strchr(cpf, '\n') == NULL )
@@ -216,11 +177,11 @@ void le_cpf(char *cpf){
             continue;
 }
 void le_email(char *email){
-    printf("|||                    Digite o email do funcionário: ");
+    printf("Digite o email do funcionário: ");
     fgets(email, 51, stdin);
     while (!valida_email(email)){
-        printf("|||                    Email inválido\n");
-        printf("|||                    Digite o email do funcionário: ");
+        printf("Email inválido\n");
+        printf("Digite o email do funcionário: ");
         fgets(email, 51, stdin);
     }
     if( strchr(email, '\n') == NULL )
@@ -229,20 +190,20 @@ void le_email(char *email){
 }
 void le_senha(char *senha){
     char confirm_senha[51];
-    printf("|||                    Digite a senha do funcionário: ");
+    printf("Digite a senha do funcionário: ");
     fgets(senha, 51, stdin);
 
     while(strlen(senha) < 6){
-        printf("|||                    Senha muito curta. Mínimo de 5 caracteres:\n");
-        printf("|||                    Digite a senha do funcionário: ");
+        printf("Senha muito curta. Mínimo de 5 caracteres:\n");
+        printf("Digite a senha do funcionário: ");
         fgets(senha, 51, stdin);
     }
 
-    printf("|||                    Digite a senha novamente: ");
+    printf("Digite a senha novamente: ");
     fgets(confirm_senha, 51, stdin);
 
     while (strncmp(senha, confirm_senha, 51) != 0){
-        printf("|||                    As senhas não conferem. Digite novamente: ");
+        printf("As senhas não conferem. Digite novamente: ");
         fgets(confirm_senha, 51, stdin);
     };
     
@@ -251,14 +212,14 @@ void le_senha(char *senha){
         continue;
 }
 void le_telefone(char *telefone){
-    printf("|||                    Digite o telefone do funcionário: ");
+    printf("Digite o telefone do funcionário: ");
     fgets(telefone, 22, stdin);
     while (!valida_telefone(telefone)){
         if( strchr(telefone, '\n') == NULL )
         while (getchar() != '\n')
             continue;
-        printf("|||                    Telefone inválido\n");
-        printf("|||                    Digite o telefone do funcionário: ");
+        printf("Telefone inválido\n");
+        printf("Digite o telefone do funcionário: ");
         fgets(telefone, 22, stdin);
     }
     if( strchr(telefone, '\n') == NULL )
@@ -266,12 +227,12 @@ void le_telefone(char *telefone){
             continue;
 }
 void le_endereco(char *endereco){
-    printf("|||                    Digite o endereço do funcionário: ");
+    printf("Digite o endereço do funcionário: ");
     fgets(endereco, 51, stdin);
 
     while(strlen(endereco) < 6){
-        printf("|||                    Endereço muito curto. Mínimo de 5 caracteres:\n");
-        printf("|||                    Digite o endereço do funcionário: ");
+        printf("Endereço muito curto. Mínimo de 5 caracteres:\n");
+        printf("Digite o endereço do funcionário: ");
         fgets(endereco, 51, stdin);
     }
 
@@ -285,15 +246,15 @@ Funcionario* preencheFuncionario(void) {
     Funcionario* func;
     func = (Funcionario*) malloc(sizeof(Funcionario));
     le_cpf(func->cpf);
-    printf("|||                                                                         |||\n");
+    printf("\n");
     le_nome(func->nome);
-    printf("|||                                                                         |||\n");
+    printf("\n");
     le_email(func->email);
-    printf("|||                                                                         |||\n");
+    printf("\n");
     le_senha(func->senha);
-    printf("|||                                                                         |||\n");
+    printf("\n");
     le_telefone(func->telefone);
-    printf("|||                                                                         |||\n");
+    printf("\n");
     le_endereco(func->endereco);
     
     size_t len = strlen(func->cpf);
@@ -328,12 +289,12 @@ void gravaFuncionario(Funcionario* func) {
   FILE* fp;
   fp = fopen("funcionarios.dat", "ab");
   if (fp == NULL) {
-    printf("|||                         Ops! Ocorreu um erro na abertura do arquivo!    |||\n");
-    printf("|||                         Não é possível continuar este programa...       |||\n");
+    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Não é possível continuar este programa...\n");
     exit(1);
   }
   if(buscaFuncionario(func->cpf) != NULL){
-    printf("|||                         Erro! CPF já cadastrado!                        |||\n");
+    printf("Erro! CPF já cadastrado!\n");
   }else{
     fwrite(func, sizeof(Funcionario), 1, fp);
   }
@@ -367,9 +328,9 @@ Funcionario* buscaFuncionario(char* cpf) {
 
 void exibeFuncionario(Funcionario* func) {
   if (func == NULL) {
-    printf("\n= = = Funcionario Inexistente = = =\n");
+    printf("= = = Funcionario Inexistente = = =\n");
   } else {
-    printf("\n= = = Funcionario Cadastrado = = =\n");
+    printf("= = = Funcionario Cadastrado = = =\n");
     printf("CPF: %s\n", func->cpf);
     printf("Nome: %s\n", func->nome);
     printf("Email: %s\n", func->email);
