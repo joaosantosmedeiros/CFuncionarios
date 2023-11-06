@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "funcionarios.h"
 #include "departamentos.h"
+#include "projetos.h"
 
 void tela_menu_principal(void);
 void tela_sobre(void);
@@ -35,7 +36,7 @@ void tela_menu_principal(void) {
         printf("|||                                                                         |||\n");
         printf("|||            1. Módulo Funcionários                                       |||\n");
         printf("|||            2. Módulo Departamento                                       |||\n");
-        printf("|||            3. Módulo Desempenho                                         |||\n");
+        printf("|||            3. Módulo Projetos                                           |||\n");
         printf("|||            4. Módulo Relatórios                                         |||\n");
         printf("|||            5. Sobre                                                     |||\n");
         printf("|||            0. Sair                                                      |||\n");
@@ -60,8 +61,7 @@ void tela_menu_principal(void) {
             modulo_departamentos();
             break;
         case '3':
-            printf("\nEm desenvolvimento\n");
-            printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+            modulo_projetos();
             getchar();
             break;
         case '4':
