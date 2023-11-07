@@ -109,8 +109,8 @@ void cadastrar_projeto(void) {
 
 
 void atualizar_projeto(void) {;
-    char cpf[13];
-    int id_projeto, id_departamento;
+    int id_projeto;
+    Projeto* prjt;
     system("clear||cls");
     printf("\n");
     printf("|||            ===================================================          |||\n");
@@ -124,10 +124,10 @@ void atualizar_projeto(void) {;
     printf("Digite o id do projeto: ");
     scanf("%d", &id_projeto);
     getchar();
-    printf("Digite o id do departamento: ");
-    scanf("%d", &id_departamento);
-    getchar();
-    le_cpf(cpf);
+    prjt = preencheProjeto();
+    prjt->id = id_projeto;
+    atualizaProjeto(prjt);
+    free(prjt);
     printf("\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
@@ -291,4 +291,47 @@ void excluiProjeto(Projeto* prjtLido) {
     fclose(fp);
     free(prjtArq);
   }
+}
+
+void atualizaProjeto(Projeto* prjt) {
+    FILE* fp;
+    Projeto* prjtArq;
+    Departamento* dept;
+    Funcionario* func;
+    int achou = 0;
+    if (prjt == NULL) {
+        printf("Ops! O projeto informado não existe!\n");
+    } else {
+        prjtArq = (Projeto*) malloc(sizeof(Projeto));
+        fp = fopen("projetos.dat", "r+b");
+        if (fp == NULL) {
+            printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+            printf("Não é possível continuar este programa...\n");
+            exit(1);
+        }
+        while(!feof(fp)) {
+            fread(prjtArq, sizeof(Projeto), 1, fp);
+            if ((prjt->id == prjtArq->id) && (prjtArq->status == 1)) {
+                achou = 1;
+                dept = buscaDepartamentoPorId(prjt->id_dept);
+                func = buscaFuncionario(prjt->cpf_funcionario);
+                if(dept == NULL || func == NULL){
+                    printf("\nErro! Funcionário ou Departamento não existentes!");
+                }else{
+                    prjtArq->id_dept = prjt->id_dept;
+                    strcpy(prjtArq->cpf_funcionario, prjt->cpf_funcionario);
+                    fseek(fp, -1*sizeof(Projeto), SEEK_CUR);
+                    fwrite(prjtArq, sizeof(Projeto), 1, fp);
+                    printf("\nProjeto atualizado com sucesso!\n");
+                }
+                break;
+            }
+        }
+        if (!achou) {
+            printf("\nProjeto não encontrado!\n");
+        }
+        fclose(fp);
+        free(prjtArq);
+        getchar();
+    }
 }

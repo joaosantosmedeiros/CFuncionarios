@@ -23,6 +23,7 @@ void gravaProjeto(Projeto*);
 Projeto* buscaProjeto(int);
 void exibeProjeto(Projeto*);
 
-
 void excluiProjeto(Projeto*);
+
+void atualizaProjeto(Projeto*);
 #endif

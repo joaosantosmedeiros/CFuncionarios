@@ -62,7 +62,6 @@ void tela_menu_principal(void) {
             break;
         case '3':
             modulo_projetos();
-            getchar();
             break;
         case '4':
             printf("\nEm desenvolvimento\n");
