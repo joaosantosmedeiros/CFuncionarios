@@ -103,7 +103,7 @@ void cadastrar_funcionario(void) {
 
 
 void atualizar_funcionario(void) {
-    char cpf[13], nome[51], email[51], senha[30], telefone[30], endereco[51];
+    Funcionario* func;
     system("clear||cls");
     printf("\n");
     printf("|||            ===================================================          |||\n");
@@ -114,17 +114,9 @@ void atualizar_funcionario(void) {
     printf("|||            Developed by @joaosantosmedeiros -- since Ago, 2023          |||\n");
     printf("|||                                                                         |||\n");
     printf("|||                        Atualização de Funcionários                      |||\n\n");
-    le_cpf(cpf);
-    printf("\n");
-    le_nome(nome);
-    printf("\n");
-    le_email(email);
-    printf("\n");
-    le_senha(senha);
-    printf("\n");
-    le_telefone(telefone);
-    printf("\n");
-    le_endereco(endereco);
+    func = preencheFuncionario();
+    atualizaFuncionario(func);
+    free(func);
     printf("\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
@@ -377,4 +369,41 @@ void excluiFuncionario(Funcionario* funcLido) {
     fclose(fp);
     free(funcArq);
   }
+}
+
+void atualizaFuncionario(Funcionario* func) {
+    FILE* fp;
+    Funcionario* funcArq;
+    int achou = 0;
+    if (func == NULL) {
+        printf("Ops! O funcionário informado não existe!\n");
+    } else {
+        funcArq = (Funcionario*) malloc(sizeof(Funcionario));
+        fp = fopen("funcionarios.dat", "r+b");
+        if (fp == NULL) {
+            printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+            printf("Não é possível continuar este programa...\n");
+            exit(1);
+        }
+        while(!feof(fp)) {
+            fread(funcArq, sizeof(Funcionario), 1, fp);
+            if ((strcmp(funcArq->cpf, func->cpf) == 0) && (funcArq->status == 1)) {
+                achou = 1;
+                strcpy(funcArq->nome, func->nome);
+                strcpy(funcArq->email, func->email);
+                strcpy(funcArq->senha, func->senha);
+                strcpy(funcArq->telefone, func->telefone);
+                strcpy(funcArq->endereco, func->endereco);
+                fseek(fp, -1*sizeof(Funcionario), SEEK_CUR);
+                fwrite(funcArq, sizeof(Funcionario), 1, fp);
+                printf("\nFuncionário atualizado com sucesso!\n");
+                break;
+            }
+        }
+        if (!achou) {
+            printf("\nFuncionário não encontrado!\n");
+        }
+        fclose(fp);
+        free(funcArq);
+    }
 }

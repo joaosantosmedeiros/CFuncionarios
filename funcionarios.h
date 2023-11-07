@@ -33,4 +33,6 @@ Funcionario* buscaFuncionario(char*);
 void exibeFuncionario(Funcionario*);
 
 void excluiFuncionario(Funcionario*);
+
+void atualizaFuncionario(Funcionario*);
 #endif
