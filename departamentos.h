@@ -29,4 +29,5 @@ void exibeDepartamento(Departamento*);
 
 void excluiDepartamento(Departamento*);
 
+void atualizaDepartamento(Departamento*);
 #endif

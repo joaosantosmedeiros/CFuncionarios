@@ -102,9 +102,9 @@ void cadastrar_departamento(void) {
 }
 
 
-void atualizar_departamento(void) {;
-    char nome[51], sigla[10];
+void atualizar_departamento(void) {
     int id;
+    Departamento* dept;
     system("clear||cls");
     printf("\n");
     printf("|||            ===================================================          |||\n");
@@ -118,9 +118,10 @@ void atualizar_departamento(void) {;
     printf("Digite o id do departamento: ");
     scanf("%d", &id);
     getchar();
-    le_nome_dpt(nome);
-    printf("\n");
-    le_sigla(sigla);
+    dept = preencheDepartamento();
+    dept->id = id;
+    atualizaDepartamento(dept);
+    free(dept);
     printf("\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
@@ -277,7 +278,6 @@ void exibeDepartamento(Departamento* dept) {
   }
 }
 
-
 void excluiDepartamento(Departamento* deptLido) {
   FILE* fp;
   Departamento* deptArq;
@@ -309,4 +309,38 @@ void excluiDepartamento(Departamento* deptLido) {
     fclose(fp);
     free(deptArq);
   }
+}
+
+void atualizaDepartamento(Departamento* dept) {
+    FILE* fp;
+    Departamento* deptArq;
+    int achou = 0;
+    if (dept == NULL) {
+        printf("Ops! O departamento informado não existe!\n");
+    } else {
+        deptArq = (Departamento*) malloc(sizeof(Departamento));
+        fp = fopen("departamentos.dat", "r+b");
+        if (fp == NULL) {
+            printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+            printf("Não é possível continuar este programa...\n");
+            exit(1);
+        }
+        while(!feof(fp)) {
+            fread(deptArq, sizeof(Departamento), 1, fp);
+            if ((dept->id == deptArq->id) && (deptArq->status == 1)) {
+                achou = 1;
+                strcpy(deptArq->nome, dept->nome);
+                strcpy(deptArq->sigla, dept->sigla);
+                fseek(fp, -1*sizeof(Departamento), SEEK_CUR);
+                fwrite(deptArq, sizeof(Departamento), 1, fp);
+                printf("\nDepartamento atualizado com sucesso!\n");
+                break;
+            }
+        }
+        if (!achou) {
+            printf("\nDepartamento não encontrado!\n");
+        }
+        fclose(fp);
+        free(deptArq);
+    }
 }
