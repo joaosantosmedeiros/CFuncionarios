@@ -153,6 +153,28 @@ void deletar_departamento(void) {
 }
 
 
+void lista_departamentos(void) {
+  FILE* fp;
+  Departamento* dept;
+  printf("\n = Lista de Departamentos = \n"); 
+  dept = (Departamento*) malloc(sizeof(Departamento));
+  fp = fopen("departamentos.dat", "rb");
+  if (fp == NULL) {
+    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Não é possível continuar este programa...\n");
+    exit(1);
+  }
+  while(fread(dept, sizeof(Departamento), 1, fp)) {
+    if (dept->status == 1) {
+      exibeDepartamento(dept);
+    }
+  }
+  fclose(fp);
+  free(dept);
+  getchar();
+}
+
+
 void le_nome_dpt(char *nome){
     printf("\nDigite o nome do departamento: ");
     fgets(nome, 51, stdin);

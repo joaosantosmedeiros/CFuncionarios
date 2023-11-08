@@ -101,6 +101,7 @@ void tela_menu_principal(void) {
                     case '1':
                         lista_funcionarios();
                     case '2':
+                        lista_departamentos();
                         break;
                     case '3':
                         lista_projetos();
