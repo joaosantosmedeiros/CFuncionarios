@@ -146,6 +146,26 @@ void deletar_funcionario(void) {
     getchar();
 }
 
+void lista_funcionarios(void) {
+  FILE* fp;
+  Funcionario* func;
+  printf("\n = Lista de Funcionários = \n"); 
+  func = (Funcionario*) malloc(sizeof(Funcionario));
+  fp = fopen("funcionarios.dat", "rb");
+  if (fp == NULL) {
+    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Não é possível continuar este programa...\n");
+    exit(1);
+  }
+  while(fread(func, sizeof(Funcionario), 1, fp)) {
+    if (func->status == 1) {
+      exibeFuncionario(func);
+    }
+  }
+  fclose(fp);
+  free(func);
+  getchar();
+}
 
 void le_nome(char *nome){
     printf("Digite o nome do funcionário: ");

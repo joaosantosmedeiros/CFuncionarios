@@ -37,7 +37,7 @@ void tela_menu_principal(void) {
         printf("|||            1. Módulo Funcionários                                       |||\n");
         printf("|||            2. Módulo Departamento                                       |||\n");
         printf("|||            3. Módulo Projetos                                           |||\n");
-        printf("|||            4. Módulo Relatórios                                         |||\n");
+        printf("|||            4. Relatórios                                                |||\n");
         printf("|||            5. Sobre                                                     |||\n");
         printf("|||            0. Sair                                                      |||\n");
         printf("|||                                                                         |||\n");
@@ -64,9 +64,49 @@ void tela_menu_principal(void) {
             modulo_projetos();
             break;
         case '4':
-            printf("\nEm desenvolvimento\n");
-            printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-            getchar();
+            char op;
+            do{
+                system("clear||cls");
+                printf("\n");
+                printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+                printf("|||                                                                         |||\n");
+                printf("|||            ===================================================          |||\n");
+                printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
+                printf("|||            = = = =  Sistema de Gestão de Funcionários  = = = =          |||\n");
+                printf("|||            = = = = = = = = = = = = = = = = = = = = = = = = = =          |||\n");
+                printf("|||            ===================================================          |||\n");
+                printf("|||            Developed by @joaosantosmedeiros -- since Ago, 2023          |||\n");
+                printf("|||                                                                         |||\n");
+                printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+                printf("|||                                                                         |||\n");
+                printf("|||                           Relatórios                                    |||\n");
+                printf("|||                                                                         |||\n");
+                printf("|||            1. Relatório Funcionários                                    |||\n");
+                printf("|||            2. Relatório Departamento                                    |||\n");
+                printf("|||            3. Relatório Projetos                                        |||\n");
+                printf("|||            0. Sair                                                      |||\n");
+                printf("|||                                                                         |||\n");
+                printf("|||            Escolha a opção desejada: ");
+                scanf("%c", &op);
+                getchar();
+                printf("|||                                                                         |||\n");
+                printf("|||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|||\n");
+                printf("\n");
+                printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+                getchar();
+                
+                switch(op){
+                    case '0':
+                        break;
+                    case '1':
+                        lista_funcionarios();
+                    case '2':
+                        break;
+                    case '3':
+                        lista_projetos();
+                        break;
+                }
+            }while(op != '0');
             break;
         case '5':
             tela_sobre();

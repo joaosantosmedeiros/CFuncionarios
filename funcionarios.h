@@ -6,6 +6,7 @@ void buscar_funcionario(void);
 void cadastrar_funcionario(void);
 void atualizar_funcionario(void);
 void deletar_funcionario(void);
+void lista_funcionarios(void);
 
 void le_nome(char*);
 void le_cpf(char*);
