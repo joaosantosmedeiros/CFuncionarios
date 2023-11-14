@@ -173,6 +173,26 @@ void lista_departamentos(void) {
   free(dept);
   getchar();
 }
+void lista_departamentos_inativos(void) {
+  FILE* fp;
+  Departamento* dept;
+  printf("\n = Lista de Departamentos Inativos = \n"); 
+  dept = (Departamento*) malloc(sizeof(Departamento));
+  fp = fopen("departamentos.dat", "rb");
+  if (fp == NULL) {
+    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Não é possível continuar este programa...\n");
+    exit(1);
+  }
+  while(fread(dept, sizeof(Departamento), 1, fp)) {
+    if (dept->status == 0) {
+      exibeDepartamentoInativo(dept);
+    }
+  }
+  fclose(fp);
+  free(dept);
+  getchar();
+}
 
 
 void le_nome_dpt(char *nome){
@@ -293,6 +313,17 @@ void exibeDepartamento(Departamento* dept) {
     printf("= = = Departamento Inexistente = = =\n");
   } else {
     printf("= = = Departamento Cadastrado = = =\n");
+    printf("Id: %d\n", dept->id);
+    printf("Nome: %s\n", dept->nome);
+    printf("Sigla: %s\n", dept->sigla);
+    printf("Status: %d\n", dept->status);
+  }
+}
+void exibeDepartamentoInativo(Departamento* dept) {
+  if (dept == NULL) {
+    printf("= = = Departamento Inexistente = = =\n");
+  } else {
+    printf("= = = Departamento Inativo = = =\n");
     printf("Id: %d\n", dept->id);
     printf("Nome: %s\n", dept->nome);
     printf("Sigla: %s\n", dept->sigla);

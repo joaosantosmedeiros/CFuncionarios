@@ -7,6 +7,7 @@ void cadastrar_departamento(void);
 void atualizar_departamento(void);
 void deletar_departamento(void);
 void lista_departamentos(void);
+void lista_departamentos_inativos(void);
 
 
 void le_nome_dpt(char*);
@@ -27,6 +28,7 @@ void gravaDepartamento(Departamento*);
 Departamento* buscaDepartamento(char*);
 Departamento* buscaDepartamentoPorId(int);
 void exibeDepartamento(Departamento*);
+void exibeDepartamentoInativo(Departamento*);
 
 void excluiDepartamento(Departamento*);
 
