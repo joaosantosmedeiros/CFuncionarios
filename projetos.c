@@ -179,6 +179,26 @@ void lista_projetos(void) {
   free(prjt);
   getchar();
 }
+void lista_projetos_inativos(void) {
+  FILE* fp;
+  Projeto* prjt;
+  printf("\n = Lista de Projetos Inativos = \n"); 
+  prjt = (Projeto*) malloc(sizeof(Projeto));
+  fp = fopen("projetos.dat", "rb");
+  if (fp == NULL) {
+    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Não é possível continuar este programa...\n");
+    exit(1);
+  }
+  while(fread(prjt, sizeof(Projeto), 1, fp)) {
+    if (prjt->status == 0) {
+      exibeProjetoInativo(prjt);
+    }
+  }
+  fclose(fp);
+  free(prjt);
+  getchar();
+}
 
 
 Projeto* preencheProjeto(void) {
@@ -252,6 +272,17 @@ void exibeProjeto(Projeto* prjt) {
     printf("= = = Projeto Inexistente = = =\n");
   } else {
     printf("= = = Projeto Cadastrado = = =\n");
+    printf("Id: %d\n", prjt->id);
+    printf("CPF Funcionário: %s\n", prjt->cpf_funcionario);
+    printf("Id Departamento: %d\n", prjt->id_dept);
+    printf("Status: %d\n", prjt->status);
+  }
+}
+void exibeProjetoInativo(Projeto* prjt) {
+  if (prjt == NULL) {
+    printf("= = = Projeto Inexistente = = =\n");
+  } else {
+    printf("= = = Projeto Inativo = = =\n");
     printf("Id: %d\n", prjt->id);
     printf("CPF Funcionário: %s\n", prjt->cpf_funcionario);
     printf("Id Departamento: %d\n", prjt->id_dept);

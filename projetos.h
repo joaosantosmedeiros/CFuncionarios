@@ -7,6 +7,7 @@ void cadastrar_projeto(void);
 void atualizar_projeto(void);
 void deletar_projeto(void);
 void lista_projetos(void);
+void lista_projetos_inativos(void);
 
 typedef struct projeto Projeto;
 
@@ -22,6 +23,7 @@ void gravaProjeto(Projeto*);
 
 Projeto* buscaProjeto(int);
 void exibeProjeto(Projeto*);
+void exibeProjetoInativo(Projeto*);
 
 void excluiProjeto(Projeto*);
 
