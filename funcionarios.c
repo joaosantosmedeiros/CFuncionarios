@@ -166,6 +166,26 @@ void lista_funcionarios(void) {
   free(func);
   getchar();
 }
+void lista_funcionarios_inativos(void) {
+  FILE* fp;
+  Funcionario* func;
+  printf("\n = Lista de Funcionários Inativos = \n"); 
+  func = (Funcionario*) malloc(sizeof(Funcionario));
+  fp = fopen("funcionarios.dat", "rb");
+  if (fp == NULL) {
+    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Não é possível continuar este programa...\n");
+    exit(1);
+  }
+  while(fread(func, sizeof(Funcionario), 1, fp)) {
+    if (func->status == 0) {
+      exibeFuncionarioInativo(func);
+    }
+  }
+  fclose(fp);
+  free(func);
+  getchar();
+}
 
 void le_nome(char *nome){
     printf("Digite o nome do funcionário: ");
@@ -348,6 +368,19 @@ void exibeFuncionario(Funcionario* func) {
     printf("= = = Funcionario Inexistente = = =\n");
   } else {
     printf("= = = Funcionario Cadastrado = = =\n");
+    printf("CPF: %s\n", func->cpf);
+    printf("Nome: %s\n", func->nome);
+    printf("Email: %s\n", func->email);
+    printf("Telefone: %s\n", func->telefone);
+    printf("Endereço: %s\n", func->endereco);
+    printf("Status: %d\n", func->status);
+  }
+}
+void exibeFuncionarioInativo(Funcionario* func) {
+  if (func == NULL) {
+    printf("= = = Funcionario Inexistente = = =\n");
+  } else {
+    printf("= = = Funcionario Inativo = = =\n");
     printf("CPF: %s\n", func->cpf);
     printf("Nome: %s\n", func->nome);
     printf("Email: %s\n", func->email);

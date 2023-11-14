@@ -82,8 +82,11 @@ void tela_menu_principal(void) {
                 printf("|||                           Relatórios                                    |||\n");
                 printf("|||                                                                         |||\n");
                 printf("|||            1. Relatório Funcionários                                    |||\n");
-                printf("|||            2. Relatório Departamento                                    |||\n");
-                printf("|||            3. Relatório Projetos                                        |||\n");
+                printf("|||            2. Relatório Funcionários Inativos                           |||\n");
+                printf("|||            3. Relatório Departamentos                                   |||\n");
+                printf("|||            4. Relatório Departamentos Inativos                          |||\n");
+                printf("|||            5. Relatório Projetos                                        |||\n");
+                printf("|||            6. Relatório Projetos Inativos                               |||\n");
                 printf("|||            0. Sair                                                      |||\n");
                 printf("|||                                                                         |||\n");
                 printf("|||            Escolha a opção desejada: ");
@@ -102,10 +105,19 @@ void tela_menu_principal(void) {
                         lista_funcionarios();
                         break;
                     case '2':
-                        lista_departamentos();
+                        lista_funcionarios_inativos();
                         break;
                     case '3':
+                        lista_departamentos();
+                        break;
+                    case '4':
+                        lista_departamentos_inativos();
+                        break;
+                    case '5':
                         lista_projetos();
+                        break;
+                    case '6':
+                        lista_projetos_inativos();
                         break;
                 }
             }while(op != '0');

@@ -7,6 +7,7 @@ void cadastrar_funcionario(void);
 void atualizar_funcionario(void);
 void deletar_funcionario(void);
 void lista_funcionarios(void);
+void lista_funcionarios_inativos(void);
 
 void le_nome(char*);
 void le_cpf(char*);
@@ -32,6 +33,7 @@ void gravaFuncionario(Funcionario*);
 
 Funcionario* buscaFuncionario(char*);
 void exibeFuncionario(Funcionario*);
+void exibeFuncionarioInativo(Funcionario*);
 
 void excluiFuncionario(Funcionario*);
 
