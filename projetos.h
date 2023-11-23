@@ -8,6 +8,7 @@ void atualizar_projeto(void);
 void deletar_projeto(void);
 void lista_projetos(void);
 void lista_projetos_inativos(void);
+void lista_projetos_com_funcionarios(void);
 
 typedef struct projeto Projeto;
 

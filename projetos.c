@@ -179,6 +179,38 @@ void lista_projetos(void) {
   free(prjt);
   getchar();
 }
+void lista_projetos_com_funcionarios(void) {
+    FILE* fp;
+    Projeto* prjt;
+    Funcionario* func;
+    printf("\n = Lista de Projetos = \n"); 
+    prjt = (Projeto*) malloc(sizeof(Projeto));
+    fp = fopen("projetos.dat", "rb");
+    if (fp == NULL) {
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar este programa...\n");
+        exit(1);
+    }
+    while(fread(prjt, sizeof(Projeto), 1, fp)) {
+        if (prjt->status == 1) {
+            func = buscaFuncionario(prjt->cpf_funcionario);
+            if (func != NULL && func->status == 1) {
+                printf("= = = Projeto Cadastrado = = =\n");
+                printf("Id: %d\n", prjt->id);
+                printf("CPF Funcionário: %s\n", prjt->cpf_funcionario);
+                printf("Nome do Funcionário: %s\n", func->nome);
+                printf("Email do Funcionário: %s\n", func->email);
+                printf("Telefone do Funcionário: %s\n", func->telefone);
+                printf("Endereço do Funcionário: %s\n", func->endereco);
+                printf("Id Departamento: %d\n", prjt->id_dept);
+                printf("Status: %d\n", prjt->status);
+            }
+        }
+    }
+    fclose(fp);
+    free(prjt);
+    getchar();
+}
 void lista_projetos_inativos(void) {
   FILE* fp;
   Projeto* prjt;

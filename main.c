@@ -86,7 +86,8 @@ void tela_menu_principal(void) {
                 printf("|||            3. Relatório Departamentos                                   |||\n");
                 printf("|||            4. Relatório Departamentos Inativos                          |||\n");
                 printf("|||            5. Relatório Projetos                                        |||\n");
-                printf("|||            6. Relatório Projetos Inativos                               |||\n");
+                printf("|||            6. Relatório Projetos com Funcionário                        |||\n");
+                printf("|||            7. Relatório Projetos Inativos                               |||\n");
                 printf("|||            0. Sair                                                      |||\n");
                 printf("|||                                                                         |||\n");
                 printf("|||            Escolha a opção desejada: ");
@@ -117,6 +118,9 @@ void tela_menu_principal(void) {
                         lista_projetos();
                         break;
                     case '6':
+                        lista_projetos_com_funcionarios();
+                        break;
+                    case '7':
                         lista_projetos_inativos();
                         break;
                 }
