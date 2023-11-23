@@ -9,6 +9,7 @@ void deletar_projeto(void);
 void lista_projetos(void);
 void lista_projetos_inativos(void);
 void lista_projetos_com_funcionarios(void);
+void lista_projetos_com_departamentos(void);
 
 typedef struct projeto Projeto;
 
