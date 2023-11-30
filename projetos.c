@@ -211,44 +211,6 @@ void lista_projetos_com_funcionarios(void) {
     free(prjt);
     getchar();
 }
-void lista_projetos_com_departamentos(void) {
-    FILE* fp;
-    Projeto* projeto;
-    Departamento* dept;
-    printf("\n = Lista de Projetos com Departamentos = \n");
-    
-    fp = fopen("projetos.dat", "rb");
-    if (fp == NULL) {
-        printf("Ops! Ocorreu um erro na abertura do arquivo de projetos!\n");
-        printf("Não é possível continuar este programa...\n");
-        exit(1);
-    }
-
-    projeto = (Projeto*)malloc(sizeof(Projeto));
-    while (fread(projeto, sizeof(Projeto), 1, fp)) {
-        if (projeto->status == 1) {
-            printf("= = = Projeto = = =\n");
-            printf("ID: %d\n", projeto->id);
-            printf("CPF Funcionário: %s\n", projeto->cpf_funcionario);
-
-            dept = buscaDepartamentoPorId(projeto->id_dept);
-            if (dept != NULL) {
-                printf("Id do dept: %d\n", dept->id);
-                printf("Nome do dept: %s\n", dept->nome);
-                printf("Sigla do dept: %s\n", dept->sigla);
-
-            } else {
-                printf("Departamento não encontrado!\n");
-            }
-
-            printf("\n");
-        }
-    }
-
-    fclose(fp);
-    free(projeto);
-    getchar();
-}
 
 void lista_projetos_inativos(void) {
   FILE* fp;
