@@ -83,11 +83,11 @@ void tela_menu_principal(void) {
                 printf("|||                                                                         |||\n");
                 printf("|||            1. Relatório Funcionários                                    |||\n");
                 printf("|||            2. Relatório Funcionários Inativos                           |||\n");
-                printf("|||            3. Relatório Departamentos                                   |||\n");
-                printf("|||            4. Relatório Departamentos Inativos                          |||\n");
-                printf("|||            5. Relatório Projetos                                        |||\n");
-                printf("|||            6. Relatório Projetos com Funcionário                        |||\n");
-                printf("|||            7. Relatório Projetos com Departamento                       |||\n");
+                printf("|||            3. Relatório Funcionários Ordenados                          |||\n");
+                printf("|||            4. Relatório Departamentos                                   |||\n");
+                printf("|||            5. Relatório Departamentos Inativos                          |||\n");
+                printf("|||            6. Relatório Projetos                                        |||\n");
+                printf("|||            7. Relatório Projetos com Funcionário                        |||\n");
                 printf("|||            8. Relatório Projetos Inativos                               |||\n");
                 printf("|||            0. Sair                                                      |||\n");
                 printf("|||                                                                         |||\n");
@@ -110,19 +110,19 @@ void tela_menu_principal(void) {
                         lista_funcionarios_inativos();
                         break;
                     case '3':
-                        lista_departamentos();
+                        lista_funcionarios_ordenados();
                         break;
                     case '4':
-                        lista_departamentos_inativos();
+                        lista_departamentos();
                         break;
                     case '5':
-                        lista_projetos();
+                        lista_departamentos_inativos();
                         break;
                     case '6':
-                        lista_projetos_com_funcionarios();
+                        lista_projetos();
                         break;
                     case '7':
-                        lista_projetos_com_departamentos();
+                        lista_projetos_com_funcionarios();
                         break;
                     case '8':
                         lista_projetos_inativos();

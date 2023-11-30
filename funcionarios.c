@@ -460,3 +460,74 @@ void atualizaFuncionario(Funcionario* func) {
         free(funcArq);
     }
 }
+
+void lista_funcionarios_ordenados(void){
+    system("clear||cls");
+    FILE* file;
+    Funcionario* novofun;  
+    Funcionario* lista;  
+
+
+    file = fopen("funcionarios.dat", "rb"); 
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo\n");
+        exit(1);  
+    }
+
+    printf("\n = Lista de Funcionários Ordenados = \n"); 
+
+    lista = NULL; 
+    novofun = (Funcionario*)malloc(sizeof(Funcionario));
+
+    if (novofun == NULL) {  
+        printf("Erro de alocação de memória\n");
+        exit(1); 
+      }
+
+    while (fread(novofun, sizeof(Funcionario), 1, file) == 1) {  
+      novofun->prox = NULL;  
+
+      if ((lista == NULL) || (strcmp(novofun->nome, lista->nome) < 0)) {  
+          novofun->prox = lista;  
+          lista = novofun;  
+      } else {  
+          Funcionario* ant = lista;  
+          Funcionario* atual = lista->prox;
+          while ((atual != NULL) && strcmp(atual->nome, novofun->nome) < 0) {   
+              ant = atual;  
+              atual = atual->prox; 
+          }
+          ant->prox = novofun;  
+          novofun->prox = atual; 
+      }
+
+      novofun = (Funcionario*)malloc(sizeof(Funcionario));
+      if (novofun == NULL) {
+          printf("Erro de alocação de memória\n");
+          exit(1);
+      }
+    }
+
+    fclose(file);
+
+    novofun = lista; 
+    while (novofun != NULL) {
+        if(novofun->status == 1){
+            exibeFuncionario(novofun);
+        } else{
+            exibeFuncionarioInativo(novofun);
+        }
+        printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+        printf("\n");
+        novofun = novofun->prox;  
+    }
+
+    novofun = lista;  
+    while (lista != NULL) {
+        lista = lista->prox;  
+        free(novofun); 
+        novofun = lista; 
+    }
+
+    getchar();
+} 
